@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hardcodedmod:block/zrirt",
+    "up": "hardcodedmod:block/zrass_block_top",
+    "north": "hardcodedmod:block/zrass_block_side",
+    "south": "hardcodedmod:block/zrass_block_side",
+    "east": "hardcodedmod:block/zrass_block_side",
+    "west": "hardcodedmod:block/zrass_block_side",
+    "particle": "hardcodedmod:block/zrass_block_side"
+  }
+}

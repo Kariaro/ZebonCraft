@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "hardcodedmod",
+  "pattern": [
+    "xx",
+    " a",
+    " a"
+  ],
+  "key": {
+    "x": {
+      "item": "hardcodedmod:zebon_ingot"
+    },
+    "a": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "hardcodedmod:zebon_hoe"
+  }
+}

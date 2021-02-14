@@ -1,0 +1,28 @@
+{
+  "block.hardcodedmod.zebon_ore": "Zebon Ore",
+  "block.hardcodedmod.zebon_block": "Zebon Block",
+  "block.hardcodedmod.zrass_block": "Zrass block",
+  "block.hardcodedmod.zrirt": "Zrirt",
+  "block.hardcodedmod.dried_zrirt": "Dried Zrirt",
+  "block.hardcodedmod.dried_polished_zrirt": "Dried Polished Zrirt",
+  "block.hardcodedmod.zappling": "Zappling",
+  
+  "block.hardcodedmod.zrass": "Zrass",
+  "block.hardcodedmod.zeves": "Zeves",
+  
+  "enchantment.hardcodedmod.znchant": "Znchant",
+  "item.hardcodedmod.zebon_ingot": "Zebon Ingot",
+  
+  
+  "item.hardcodedmod.zebon_zvord": "Zebon Zvord",
+  "item.hardcodedmod.zebon_pickaxe": "Zebon Pickaxe",
+  "item.hardcodedmod.zebon_axe": "Zebon Axe",
+  "item.hardcodedmod.zebon_shovel": "Zebon Shovel",
+  "item.hardcodedmod.zebon_hoe": "Zebon Hoe",
+  
+  "item.hardcodedmod.zebon_helmet": "Zebon Helmet",
+  "item.hardcodedmod.zebon_chestplate": "Zebon Chestplate",
+  "item.hardcodedmod.zebon_leggings": "Zebon Leggings",
+  "item.hardcodedmod.zebon_boots": "Zebon Boots",
+  "item.hardcodedmod.zebon_horse_armor": "Zebon Horse Armor"
+}

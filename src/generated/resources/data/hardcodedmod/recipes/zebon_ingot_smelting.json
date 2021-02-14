@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "hardcodedmod:zebon_ore"
+  },
+  "result": "hardcodedmod:zebon_ingot",
+  "experience": 0.3,
+  "cookingtime": 160
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hardcodedmod:block/ztem_block"
+    }
+  }
+}

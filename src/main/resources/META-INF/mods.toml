@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="The Unlicense"
+
+[[mods]]
+	modId="hardcodedmod"
+	version="${file.jarVersion}"
+	displayName="ZbonCraft"
+	# logoFile="examplemod.png"
+	credits="Thank Sekwah for this one. *Stares*"
+	authors="HardCoded"
+	description='''
+	Very long. Not so compact. But very nice.
+	
+	https://www.twitch.tv/hard_coded
+	'''
+
+[[dependencies.hardcodedmod]]
+    modId="forge"
+    mandatory=true
+    versionRange="[34,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.hardcodedmod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="BOTH"

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hardcodedmod:block/zebon_block"
+    }
+  }
+}

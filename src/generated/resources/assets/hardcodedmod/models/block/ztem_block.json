@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hardcodedmod:block/ztem_top",
+    "up": "hardcodedmod:block/ztem_top",
+    "north": "hardcodedmod:block/ztem_side",
+    "south": "hardcodedmod:block/ztem_side",
+    "east": "hardcodedmod:block/ztem_side",
+    "west": "hardcodedmod:block/ztem_side",
+    "particle": "hardcodedmod:block/ztem_side"
+  }
+}
