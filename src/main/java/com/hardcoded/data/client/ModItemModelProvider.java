@@ -32,11 +32,32 @@ public class ModItemModelProvider extends ItemModelProvider {
 		
 		
 		// Tools
-		builder(itemHandheld, "zebon_zvord");
+		
 		builder(itemHandheld, "zebon_axe");
 		builder(itemHandheld, "zebon_hoe");
 		builder(itemHandheld, "zebon_shovel");
 		builder(itemHandheld, "zebon_pickaxe");
+		//builder(itemHandheld, "zebon_zvord");
+		
+		builder(itemHandheld, "charge_sword_0");
+		builder(itemHandheld, "charge_sword_1");
+		builder(itemHandheld, "charge_sword_2");
+		builder(itemHandheld, "charge_sword_3");
+		builder(itemHandheld, "charge_sword_4");
+		builder(itemHandheld, "charge_sword_5");
+		builder(itemHandheld, "charge_sword_6");
+		builder(itemHandheld, "charge_sword_7");
+		
+		getBuilder("zebon_zvord").parent(itemHandheld).texture("layer0", "item/zebon_zvord")
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 1 / 8f).model(getExistingFile(modLoc("item/charge_sword_0"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 2 / 8f).model(getExistingFile(modLoc("item/charge_sword_1"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 3 / 8f).model(getExistingFile(modLoc("item/charge_sword_2"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 4 / 8f).model(getExistingFile(modLoc("item/charge_sword_3"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 5 / 8f).model(getExistingFile(modLoc("item/charge_sword_4"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 6 / 8f).model(getExistingFile(modLoc("item/charge_sword_5"))).end()
+			.override().predicate(modLoc("charging"), 0).predicate(modLoc("charge"), 7 / 8f).model(getExistingFile(modLoc("item/charge_sword_6"))).end()
+			.override().predicate(modLoc("charging"), 1).model(getExistingFile(modLoc("item/charge_sword_7"))).end()
+		;
 		
 		// Armor
 		builder(itemGenerated, "zebon_helmet");

@@ -6,13 +6,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.hardcoded.mod.enchantment.ZnchantListener;
+import com.hardcoded.mod.item.ZebonSword;
 import com.hardcoded.utility.ModBlocks;
+import com.hardcoded.utility.ModItems;
 import com.hardcoded.utility.Registration;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -63,6 +67,18 @@ public class HardcodedMod {
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZAPPLING.get(), RenderType.getCutout());
 		
 		MinecraftForge.EVENT_BUS.register(new ZnchantListener());
+		
+		ItemModelsProperties.registerProperty(ModItems.ZEBON_ZVORD.get(), new ResourceLocation(MOD_ID, "charging"), (itemStack, world, entity) -> {
+			return ZebonSword.isCharged(itemStack) ? 1:0;
+		});
+		
+		ItemModelsProperties.registerProperty(ModItems.ZEBON_ZVORD.get(), new ResourceLocation(MOD_ID, "charge"), (itemStack, world, entity) -> {
+			return entity != null && entity.isHandActive() && itemStack == entity.getActiveItemStack() ? (itemStack.getUseDuration() - entity.getItemInUseCount()) / 20.0f : 0;
+		});
+		
+		//Registration.registerClient();
+		
+		//ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.ZRATE.get(), (a) -> new ZrateTileEntityRenderer(a, new ZrateModel()));
 	}
 	
 	private void enqueueIMC(final InterModEnqueueEvent event) {

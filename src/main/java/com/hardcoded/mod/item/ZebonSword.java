@@ -3,6 +3,7 @@ package com.hardcoded.mod.item;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -22,27 +23,14 @@ public class ZebonSword extends SwordItem {
 			int i = this.getUseDuration(stack) - timeLeft;
 			
 			if(i >= 10) {
-//				if(!worldIn.isRemote) {
-//					stack.damageItem(1, playerentity, (player) -> {
-//						player.sendBreakAnimation(entityLiving.getActiveHand());
-//					});
-//					
-//					TridentEntity tridententity = new TridentEntity(worldIn, playerentity, stack);
-//					tridententity.func_234612_a_(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, 2.5F, 1.0F);
-//					if(playerentity.abilities.isCreativeMode) {
-//						tridententity.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
-//					}
-//
-//					worldIn.addEntity(tridententity);
-//					worldIn.playMovingSound(null, tridententity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS, 1.0F, 1.0F);
-//					if(!playerentity.abilities.isCreativeMode) {
-//						playerentity.inventory.deleteStack(stack);
-//					}
-//				}
-
-				// playerentity.addStat(Stats.ITEM_USED.get(this));
+				setCharged(playerentity.getHeldItem(Hand.MAIN_HAND), true);
 			}
 		}
+	}
+	
+	public static void setCharged(ItemStack stack, boolean chargedIn) {
+		CompoundNBT compoundnbt = stack.getOrCreateTag();
+		compoundnbt.putBoolean("zebon_charged", chargedIn);
 	}
 	
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
@@ -51,12 +39,18 @@ public class ZebonSword extends SwordItem {
 		return ActionResult.resultConsume(itemstack);
 	}
 	
-//	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+	public static boolean isCharged(ItemStack stack) {
+		return stack.getTag().getBoolean("zebon_charged");
+	}
+	
+	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 //		stack.damageItem(1, attacker, (entity) -> {
 //			entity.sendBreakAnimation(EquipmentSlotType.MAINHAND);
 //		});
-//		return true;
-//	}
+		
+		setCharged(stack, false);
+		return true;
+	}
 	
 	public int getItemEnchantability() {
 		return 0;

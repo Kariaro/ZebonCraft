@@ -19,19 +19,16 @@ Furnace Recipes               : DONE
 Shapeless Recipes             : DONE
 Recipes                       : DONE
 LootTables     ! IMPORTAINT ! : DONE
-TileEntity                    :
-ItemAnimation                 :
+ItemAnimation                 : DONE
 Potions                       :
 Particles                     :
 Effects                       :
-Custom Entity                 :
-Animation                     :
 GUI                           :
 Inventories                   :
 Custom Keybinds               :
-Custom Biomes                 :
-Custom Worldgen               :
 Overlays                      :
+TileEntity                    :
+Custom Entity                 :
 Custom Render                 :
 Network Packets               :
 Events                        :
@@ -41,7 +38,13 @@ Rigidbody                     :
 Use Forge Fluid               :
 Use Forge RF                  :
 
+TODO.
+Custom Biomes                 :
+Custom Worldgen               :
+
 Advanced stuff.
+Animation                     :
+ItemAnimation (Custom Render) :
 Mixin                         :
 Shaders                       :
 Code Injection                :

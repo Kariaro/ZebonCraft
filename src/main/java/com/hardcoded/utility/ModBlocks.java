@@ -6,7 +6,9 @@ import com.hardcoded.mod.block.ZapplingBlock;
 import com.hardcoded.mod.block.ZrassBlock;
 import com.hardcoded.mod.block.ZrassPlantBlock;
 
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.*;
 import net.minecraftforge.common.ToolType;
@@ -39,7 +41,9 @@ public class ModBlocks {
 
 	// Zlikcid
 	static void register() {
+		//PaintingEntity
 		
+		// BowItem
 	}
 	
 	private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> block) {

@@ -2,5 +2,62 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "hardcodedmod:item/zebon_zvord"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.125
+      },
+      "model": "hardcodedmod:item/charge_sword_0"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.25
+      },
+      "model": "hardcodedmod:item/charge_sword_1"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.375
+      },
+      "model": "hardcodedmod:item/charge_sword_2"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.5
+      },
+      "model": "hardcodedmod:item/charge_sword_3"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.625
+      },
+      "model": "hardcodedmod:item/charge_sword_4"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.75
+      },
+      "model": "hardcodedmod:item/charge_sword_5"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 0.0,
+        "hardcodedmod:charge": 0.875
+      },
+      "model": "hardcodedmod:item/charge_sword_6"
+    },
+    {
+      "predicate": {
+        "hardcodedmod:charging": 1.0
+      },
+      "model": "hardcodedmod:item/charge_sword_7"
+    }
+  ]
 }
