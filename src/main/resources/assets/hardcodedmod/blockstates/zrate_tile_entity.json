@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hardcodedmod:block/zrate_tile_entity"
+    }
+  }
+}

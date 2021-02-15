@@ -13,7 +13,6 @@ public class ZrateModel extends EntityModel<ZrateEntity> {
 		body = new ModelRenderer(16, 16, 0, 0);
 		body.setRotationPoint(8, 8, 8);
 		body.addBox(0, 0, 0, 16, 16, 16);
-		
 	}
 	
 	public void setRotationAngles(ZrateEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,

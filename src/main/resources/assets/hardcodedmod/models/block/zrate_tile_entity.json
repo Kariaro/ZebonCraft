@@ -1,0 +1,6 @@
+{
+  "loader": "forge:obj",
+  "flip-v": true,
+  "ambientToFullbright": false,
+  "model": "hardcodedmod:models/block/zrate_model.obj"
+}

@@ -30,6 +30,7 @@ public class Registration {
 		ModItems.register();
 		ModEnchantments.register();
 		ModBiomes.register();
+		ModTileEntities.register();
 	}
 	
 	public static void registerClient() {

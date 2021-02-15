@@ -28,7 +28,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 		simpleBlock(ModBlocks.ZEVES.get());
 		simpleBush(ModBlocks.ZRASS.get());
 		simpleBush(ModBlocks.ZAPPLING.get());
-		
 	}
 	
 	private ModelFile cross(Block block) {

@@ -7,9 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.hardcoded.mod.enchantment.ZnchantListener;
 import com.hardcoded.mod.item.ZebonSword;
-import com.hardcoded.utility.ModBlocks;
-import com.hardcoded.utility.ModItems;
-import com.hardcoded.utility.Registration;
+import com.hardcoded.mod.tileentity.ZrateTileEntityRenderer;
+import com.hardcoded.utility.*;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -21,6 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
@@ -76,9 +76,8 @@ public class HardcodedMod {
 			return entity != null && entity.isHandActive() && itemStack == entity.getActiveItemStack() ? (itemStack.getUseDuration() - entity.getItemInUseCount()) / 20.0f : 0;
 		});
 		
-		//Registration.registerClient();
-		
-		//ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.ZRATE.get(), (a) -> new ZrateTileEntityRenderer(a, new ZrateModel()));
+		RenderTypeLookup.setRenderLayer(ModTileEntities.zrate_block, RenderType.getCutoutMipped());
+		ClientRegistry.bindTileEntityRenderer(ModTileEntities.ZRATE, ZrateTileEntityRenderer::new);
 	}
 	
 	private void enqueueIMC(final InterModEnqueueEvent event) {

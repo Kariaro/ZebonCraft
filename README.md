@@ -20,6 +20,8 @@ Shapeless Recipes             : DONE
 Recipes                       : DONE
 LootTables     ! IMPORTAINT ! : DONE
 ItemAnimation                 : DONE
+TileEntity                    : DONE
+Custom Render                 : DONE
 Potions                       :
 Particles                     :
 Effects                       :
@@ -27,9 +29,8 @@ GUI                           :
 Inventories                   :
 Custom Keybinds               :
 Overlays                      :
-TileEntity                    :
 Custom Entity                 :
-Custom Render                 :
+TileEntity (Network Packets)  :
 Network Packets               :
 Events                        :
 Redstone                      :
@@ -43,6 +44,7 @@ Custom Biomes                 :
 Custom Worldgen               :
 
 Advanced stuff.
+Custom Render (Advanced)      :
 Animation                     :
 ItemAnimation (Custom Render) :
 Mixin                         :
