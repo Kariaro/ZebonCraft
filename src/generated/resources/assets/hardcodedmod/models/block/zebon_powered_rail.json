@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "hardcodedmod:block/zebon_powered_rail"
+  }
+}

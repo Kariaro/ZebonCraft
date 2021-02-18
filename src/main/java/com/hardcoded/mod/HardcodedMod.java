@@ -10,8 +10,7 @@ import com.hardcoded.mod.item.ZebonSword;
 import com.hardcoded.mod.tileentity.ZrateTileEntityRenderer;
 import com.hardcoded.utility.*;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemModelsProperties;
@@ -65,6 +64,7 @@ public class HardcodedMod {
 		
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZRASS.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZAPPLING.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.ZEBON_POWERED_RAIL.get(), RenderType.getCutout());
 		
 		MinecraftForge.EVENT_BUS.register(new ZnchantListener());
 		

@@ -2,9 +2,7 @@ package com.hardcoded.utility;
 
 import java.util.function.Supplier;
 
-import com.hardcoded.mod.block.ZapplingBlock;
-import com.hardcoded.mod.block.ZrassBlock;
-import com.hardcoded.mod.block.ZrassPlantBlock;
+import com.hardcoded.mod.block.*;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -38,7 +36,14 @@ public class ModBlocks {
 			new Block(AbstractBlock.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(0.7f).sound(SoundType.STONE)));
 	public static final RegistryObject<Block> DRIED_POLISHED_ZRIRT = register("dried_polished_zrirt", () ->
 			new Block(AbstractBlock.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(0.7f).sound(SoundType.STONE)));
+	
+	public static final RegistryObject<Block> ZEBON_POWERED_RAIL = register("zebon_powered_rail", () ->
+			new ZebonPoweredRailBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().sound(SoundType.METAL)));
+	
+	public static final RegistryObject<Block> ZEBON_WORKBENCH = register("zebon_workbench", () ->
+			new ZebonWorkbenchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).sound(SoundType.WOOD)));
 
+	
 	// Zlikcid
 	static void register() {
 		//PaintingEntity

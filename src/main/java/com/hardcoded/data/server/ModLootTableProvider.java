@@ -17,5 +17,10 @@ public class ModLootTableProvider extends BaseLootTableProvider {
 		register(ModBlocks.DRIED_POLISHED_ZRIRT.get(), create("dried_polished_zrirt", ModBlocks.DRIED_POLISHED_ZRIRT.get()));
 		register(ModBlocks.ZRASS.get(), create("zrass", ModBlocks.ZRASS.get(), SHEARS));
 		register(ModBlocks.ZAPPLING.get(), create("zappling", ModBlocks.ZAPPLING.get()));
+		register(ModBlocks.ZEBON_BLOCK.get(), create("zebon_block", ModBlocks.ZEBON_BLOCK.get()));
+		register(ModBlocks.ZEBON_ORE.get(), create("zebon_ore", ModBlocks.ZEBON_ORE.get()));
+		
+		register(ModBlocks.ZEBON_POWERED_RAIL.get(), create("zebon_powered_rail", ModBlocks.ZEBON_POWERED_RAIL.get()));
+		register(ModBlocks.ZEBON_WORKBENCH.get(), create("zebon_workbench", ModBlocks.ZEBON_WORKBENCH.get()));
 	}
 }

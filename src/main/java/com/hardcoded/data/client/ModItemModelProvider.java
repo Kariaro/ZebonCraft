@@ -22,9 +22,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 		withExistingParent("zrass_block", modLoc("block/zrass_block"));
 		withExistingParent("ztem_block", modLoc("block/ztem_block"));
 		withExistingParent("zrirt", modLoc("block/zrirt"));
+		withExistingParent("zebon_workbench", modLoc("block/zebon_workbench"));
+		//withExistingParent("zebon_powered_rail", modLoc("block/zebon_powered_rail"));
 		withExistingParent("dried_zrirt", modLoc("block/dried_zrirt"));
 		withExistingParent("dried_polished_zrirt", modLoc("block/dried_polished_zrirt"));
-		//withExistingParent("zrass", modLoc("block/zrass"));
 		
 		ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 		ModelFile itemHandheld = getExistingFile(mcLoc("item/handheld"));
@@ -70,10 +71,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 		
 		getBuilder("zrass").parent(itemGenerated).texture("layer0", "block/zrass");
 		getBuilder("zappling").parent(itemGenerated).texture("layer0", "block/zappling");
+		getBuilder("zebon_powered_rail").parent(itemGenerated).texture("layer0", "block/zebon_powered_rail");
 	}
 	
 	private ItemModelBuilder builder(ModelFile itemGenerated, String name) {
 		return getBuilder(name).parent(itemGenerated).texture("layer0", "item/" + name);
 	}
-	
 }

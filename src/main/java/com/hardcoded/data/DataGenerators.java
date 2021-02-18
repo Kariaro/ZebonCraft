@@ -1,5 +1,6 @@
 package com.hardcoded.data;
 
+import com.hardcoded.data.client.ModBlockModelProvider;
 import com.hardcoded.data.client.ModBlockStateProvider;
 import com.hardcoded.data.client.ModItemModelProvider;
 import com.hardcoded.data.server.ModLootTableProvider;
@@ -22,6 +23,7 @@ public final class DataGenerators {
 		ExistingFileHelper file = event.getExistingFileHelper();
 		
 		if(event.includeClient()) {
+			gen.addProvider(new ModBlockModelProvider(gen, file));
 			gen.addProvider(new ModBlockStateProvider(gen, file));
 			gen.addProvider(new ModItemModelProvider(gen, file));
 		}
