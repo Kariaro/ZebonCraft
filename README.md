@@ -8,7 +8,7 @@ Everything here I need to learn before I can code anything possible within minec
 When I'm done with the list I'm going to join some projects :D
 
 ```
-Beginner stuff.
+# Beginner
 Tools                         : DONE
 Enchantments                  : DONE
 Armor                         : DONE
@@ -22,32 +22,43 @@ LootTables     ! IMPORTAINT ! : DONE
 ItemAnimation                 : DONE
 TileEntity                    : DONE
 Custom Render                 : DONE
+Rails                         : DONE
 Potions                       :
 Particles                     :
 Effects                       :
-GUI                           :
-Inventories                   :
+GUI                           : 50%
+Inventories                   : 50%
 Custom Keybinds               :
 Overlays                      :
-Custom Entity                 :
-TileEntity (Network Packets)  :
+Custom ISidedInventory        :
 Network Packets               :
 Events                        :
 Redstone                      :
-Rails                         : DONE
-Rigidbody                     :
 Use Forge Fluid               :
 Use Forge RF                  :
 
-TODO.
+# TODO
 Custom Biomes                 :
 Custom Worldgen               :
 
-Advanced stuff.
+# Intermediate
+Custom Crafting System        :
+Custom Statistics             :
+Custom Capabilities           :
+Custom Entity                 :
+TileEntity (Network Packets)  :
+Custom Dimension              :
+
+
+# Advanced stuff
+Auto generate items from tags :
+Auto generate tools from tags :
+Use other mods textures auto  :
 Custom Render (Advanced)      :
 Animation                     :
 ItemAnimation (Custom Render) :
 Mixin                         :
 Shaders                       :
+Custom AI                     :
 Code Injection                :
 ```

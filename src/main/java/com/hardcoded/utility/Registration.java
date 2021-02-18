@@ -4,6 +4,7 @@ import com.hardcoded.mod.HardcodedMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.world.biome.Biome;
@@ -17,6 +18,7 @@ public class Registration {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, HardcodedMod.MOD_ID);
 	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, HardcodedMod.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, HardcodedMod.MOD_ID);
+	public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, HardcodedMod.MOD_ID);
 	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, HardcodedMod.MOD_ID);
 	
 	public static void register() {
@@ -24,6 +26,7 @@ public class Registration {
 		ENCHANTMENTS.register(modEventBus);
 		BLOCKS.register(modEventBus);
 		ITEMS.register(modEventBus);
+		CONTAINERS.register(modEventBus);
 		TILE_ENTITIES.register(modEventBus);
 		
 		ModBlocks.register();
@@ -31,6 +34,9 @@ public class Registration {
 		ModEnchantments.register();
 		ModBiomes.register();
 		ModTileEntities.register();
+		
+		ModContainers.register();
+		ModTags.register();
 	}
 	
 	public static void registerClient() {

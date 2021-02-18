@@ -7,6 +7,7 @@ import com.hardcoded.utility.ModBlocks;
 import com.hardcoded.utility.ModItems;
 
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -102,6 +103,16 @@ public class ModRecipeProvider extends RecipeProvider {
 			20 * 8
 		).addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModBlocks.ZRIRT.get()))
 		.build(consumer, new ResourceLocation(HardcodedMod.MOD_ID, "dried_zrirt_smelting"));
+		
+		ShapedRecipeBuilder.shapedRecipe(ModBlocks.ZEBON_WORKBENCH.get())
+			.patternLine("xxx")
+			.patternLine("xax")
+			.patternLine("xxx")
+			.key('x', ModItems.ZEBON_INGOT.get())
+			.key('a', Blocks.CRAFTING_TABLE)
+			.setGroup(HardcodedMod.MOD_ID)
+			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
+			.build(consumer);
 	}
 	
 	private void simpleRecipe(String a, String b, String c, char key, IItemProvider result, IItemProvider criteria, Consumer<IFinishedRecipe> consumer) {

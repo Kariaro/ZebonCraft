@@ -3,8 +3,7 @@ package com.hardcoded.data;
 import com.hardcoded.data.client.ModBlockModelProvider;
 import com.hardcoded.data.client.ModBlockStateProvider;
 import com.hardcoded.data.client.ModItemModelProvider;
-import com.hardcoded.data.server.ModLootTableProvider;
-import com.hardcoded.data.server.ModRecipeProvider;
+import com.hardcoded.data.server.*;
 import com.hardcoded.mod.HardcodedMod;
 
 import net.minecraft.data.DataGenerator;
@@ -21,11 +20,15 @@ public final class DataGenerators {
 	public static void gatherData(GatherDataEvent event) {
 		DataGenerator gen = event.getGenerator();
 		ExistingFileHelper file = event.getExistingFileHelper();
-		
+	
 		if(event.includeClient()) {
 			gen.addProvider(new ModBlockModelProvider(gen, file));
 			gen.addProvider(new ModBlockStateProvider(gen, file));
 			gen.addProvider(new ModItemModelProvider(gen, file));
+			
+			ModBlockTagsProvider mbtp = new ModBlockTagsProvider(gen, file);
+			gen.addProvider(mbtp);
+			gen.addProvider(new ModItemTagsProvider(gen, mbtp, file));
 		}
 		
 		if(event.includeServer()) {

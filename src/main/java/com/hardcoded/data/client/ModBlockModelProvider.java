@@ -23,11 +23,11 @@ public class ModBlockModelProvider extends BlockModelProvider {
 		ModelFile raised_ne = getExistingFile(mcLoc("block/template_rail_raised_ne"));
 		ModelFile raised_sw = getExistingFile(mcLoc("block/template_rail_raised_sw"));
 		
-		buildRail(raised_sw, "zebon_powered_rail_on_raised_ne", "zebon_powered_rail_on");
-		buildRail(raised_ne, "zebon_powered_rail_on_raised_sw", "zebon_powered_rail_on");
+		buildRail(raised_ne, "zebon_powered_rail_on_raised_ne", "zebon_powered_rail_on");
+		buildRail(raised_sw, "zebon_powered_rail_on_raised_sw", "zebon_powered_rail_on");
 		buildRail(rail_flat, "zebon_powered_rail_on", "zebon_powered_rail_on");
-		buildRail(raised_sw, "zebon_powered_rail_raised_ne", "zebon_powered_rail");
-		buildRail(raised_ne, "zebon_powered_rail_raised_sw", "zebon_powered_rail");
+		buildRail(raised_ne, "zebon_powered_rail_raised_ne", "zebon_powered_rail");
+		buildRail(raised_sw, "zebon_powered_rail_raised_sw", "zebon_powered_rail");
 		buildRail(rail_flat, "zebon_powered_rail", "zebon_powered_rail");
 	}
 	

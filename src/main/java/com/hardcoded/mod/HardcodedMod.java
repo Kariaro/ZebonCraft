@@ -5,12 +5,15 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hardcoded.mod.container.ZebonWorkbenchScreen;
 import com.hardcoded.mod.enchantment.ZnchantListener;
 import com.hardcoded.mod.item.ZebonSword;
 import com.hardcoded.mod.tileentity.ZrateTileEntityRenderer;
 import com.hardcoded.utility.*;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemModelsProperties;
@@ -56,12 +59,17 @@ public class HardcodedMod {
 		LOGGER.info("HELLO FROM PREINIT");
 		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 	}
+
+	// Mill the grass to get blue powder
+	// Use the Zebon workbench with redstone and blue powder to get purple dust
+	// Purple dust is a upgraded version of redstone
 	
 	@SuppressWarnings("resource")
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		// do something that can only be done on the client
 		LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 		
+		ScreenManager.registerFactory(ModContainers.ZEBON_WORKBENCH.get(), ZebonWorkbenchScreen::new);
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZRASS.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZAPPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZEBON_POWERED_RAIL.get(), RenderType.getCutout());
