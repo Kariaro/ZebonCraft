@@ -42,7 +42,9 @@ public class ModBlocks {
 	
 	public static final RegistryObject<Block> ZEBON_WORKBENCH = register("zebon_workbench", () ->
 			new ZebonWorkbenchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).sound(SoundType.WOOD)));
-
+	
+	public static final RegistryObject<Block> ZRATE_BLOCK = register("zrate_tile_entity", () ->
+			new ZrateBlock(AbstractBlock.Properties.create(Material.ROCK).sound(SoundType.CLOTH)));
 	
 	// Zlikcid
 	static void register() {

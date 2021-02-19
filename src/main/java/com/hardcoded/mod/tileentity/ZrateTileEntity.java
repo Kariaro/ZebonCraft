@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 public class ZrateTileEntity extends TileEntity {
 	
 	public ZrateTileEntity() {
-		super(ModTileEntities.ZRATE);
+		super(ModTileEntities.ZRATE.get());
 	}
 	
 	@Override

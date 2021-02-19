@@ -28,7 +28,7 @@ import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-// ZbonCraft
+// TODO: Rename to ZebonCraftMod
 @Mod(HardcodedMod.MOD_ID)
 public class HardcodedMod {
 	private static final Logger LOGGER = LogManager.getLogger();
@@ -38,16 +38,9 @@ public class HardcodedMod {
 	public HardcodedMod() {
 		Registration.register();
 		
-		// Register the setup method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		
-		// Register the enqueueIMC method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		
-		// Register the processIMC method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-		
-		// Register the doClientStuff method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		
 		// Register ourselves for server and other game events we are interested in
@@ -84,8 +77,8 @@ public class HardcodedMod {
 			return entity != null && entity.isHandActive() && itemStack == entity.getActiveItemStack() ? (itemStack.getUseDuration() - entity.getItemInUseCount()) / 20.0f : 0;
 		});
 		
-		RenderTypeLookup.setRenderLayer(ModTileEntities.zrate_block, RenderType.getCutoutMipped());
-		ClientRegistry.bindTileEntityRenderer(ModTileEntities.ZRATE, ZrateTileEntityRenderer::new);
+		RenderTypeLookup.setRenderLayer(ModBlocks.ZRATE_BLOCK.get(), RenderType.getCutoutMipped());
+		ClientRegistry.bindTileEntityRenderer(ModTileEntities.ZRATE.get(), ZrateTileEntityRenderer::new);
 	}
 	
 	private void enqueueIMC(final InterModEnqueueEvent event) {

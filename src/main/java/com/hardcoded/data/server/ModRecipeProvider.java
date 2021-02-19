@@ -3,6 +3,7 @@ package com.hardcoded.data.server;
 import java.util.function.Consumer;
 
 import com.hardcoded.mod.HardcodedMod;
+import com.hardcoded.mod.recipe.ZebonWorkbenchRecipeBuilder;
 import com.hardcoded.utility.ModBlocks;
 import com.hardcoded.utility.ModItems;
 
@@ -113,6 +114,11 @@ public class ModRecipeProvider extends RecipeProvider {
 			.setGroup(HardcodedMod.MOD_ID)
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
 			.build(consumer);
+		
+		ZebonWorkbenchRecipeBuilder.createRecipe(ModBlocks.ZEBON_POWERED_RAIL.get(), 0.5f, 20)
+			.setIngredients(ModItems.ZEBON_INGOT.get(), Items.POWERED_RAIL)
+			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
+			.build(consumer, new ResourceLocation(HardcodedMod.MOD_ID, "zebon_workbench_zebon_powered_rail"));
 	}
 	
 	private void simpleRecipe(String a, String b, String c, char key, IItemProvider result, IItemProvider criteria, Consumer<IFinishedRecipe> consumer) {

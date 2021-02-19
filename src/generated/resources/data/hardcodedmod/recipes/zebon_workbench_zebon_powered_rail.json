@@ -1,0 +1,14 @@
+{
+  "type": "hardcodedmod:zebon_workbench_shapeless",
+  "item1": {
+    "item": "hardcodedmod:zebon_ingot"
+  },
+  "item2": {
+    "item": "minecraft:powered_rail"
+  },
+  "result": {
+    "item": "hardcodedmod:zebon_powered_rail"
+  },
+  "experience": 0.5,
+  "cookTime": 20
+}

@@ -29,5 +29,8 @@
   "item.hardcodedmod.zebon_chestplate": "Zebon Chestplate",
   "item.hardcodedmod.zebon_leggings": "Zebon Leggings",
   "item.hardcodedmod.zebon_boots": "Zebon Boots",
-  "item.hardcodedmod.zebon_horse_armor": "Zebon Horse Armor"
+  "item.hardcodedmod.zebon_horse_armor": "Zebon Horse Armor",
+  
+  "container.zebon_workbench": "Zebon Workbench",
+  "gui.recipebook.toggleRecipes.zebon_workbench": "Showing Craftable"
 }

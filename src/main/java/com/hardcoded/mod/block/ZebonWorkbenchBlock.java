@@ -19,7 +19,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public class ZebonWorkbenchBlock extends Block {
-	private static final ITextComponent CONTAINER_NAME = new TranslationTextComponent("container.crafting");
+	private static final ITextComponent CONTAINER_NAME = new TranslationTextComponent("container.zebon_workbench");
 	
 	public ZebonWorkbenchBlock(Properties properties) {
 		super(properties);
@@ -52,7 +52,7 @@ public class ZebonWorkbenchBlock extends Block {
 	
 	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
 		return new SimpleNamedContainerProvider((id, inventory, player) -> {
-			return new ZebonWorkbenchContainer(id, inventory);//, IWorldPosCallable.of(worldIn, pos));
+			return new ZebonWorkbenchContainer(id, inventory);
 		}, CONTAINER_NAME);
 	}
 }
