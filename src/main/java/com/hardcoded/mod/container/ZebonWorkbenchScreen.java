@@ -44,7 +44,11 @@ public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContaine
 		}));
 		
 		titleX = (xSize - font.getStringPropertyWidth(title)) / 2;
-		
+	}
+	
+	public void tick() {
+		super.tick();
+		recipeGui.tick();
 	}
 	
 	public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
@@ -70,6 +74,37 @@ public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContaine
 		int i = guiLeft;
 		int j = (height - ySize) / 2;
 		blit(matrixStack, i, j, 0, 0, xSize, ySize);
+		
+		// AbstractFurnaceScreen
+		// AbstractFurnaceTileEntity
+		
+		// FIXME: Burning time is now showing properly
+		if(container.isBurning()) {
+			int total_burn_time = container.getTotalBurnTime();
+			float v0 = (container.getBurnTime() + 1) / (total_burn_time + 0.0f);
+			int k = (int)(v0 * 12);
+			
+			if(k > 12) k = 12;
+			blit(matrixStack, i + 80, j + 35 + 12 - k, 176, 12 - k, 14, k + 1);
+		}
+		
+		if(container.getCraftTime() > 0) {
+			int arrow_1 = 0;
+			int arrow_2 = 0;
+			if(container.getTotalCraftTime() < 2) {
+				arrow_1 = 24;
+				arrow_2 = 22;
+			} else {
+				float v1 = (container.getCraftTime() + 1) / (container.getTotalCraftTime() + 0.0f);
+				arrow_1 = Math.min((int)(63 * v1), 24); // 24 pixels
+				arrow_2 = Math.min((int)(63 * v1) - 41, 22); // 24 pixels
+				if(arrow_2 < 0) arrow_2 = 0;
+			}
+			
+			// System.out.println(v0);
+			blit(matrixStack, i + 54, j + 35, 176, 14, arrow_1, 15); // 24
+			blit(matrixStack, i + 95, j + 38, 176, 30, arrow_2, 8);  // 22
+		}
 	}
 	
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {

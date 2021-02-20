@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 import com.hardcoded.mod.recipe.ServerRecipePlacerZebonWorkbench;
+import com.hardcoded.mod.tileentity.ZebonWorkbenchTileEntity;
 import com.hardcoded.utility.ModContainers;
 import com.hardcoded.utility.ModTags;
 
-import it.unimi.dsi.fastutil.ints.IntSet;
 import net.minecraft.client.util.RecipeBookCategories;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -30,13 +30,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	private static final List<RecipeBookCategories> RECIPE_CATEGORIES = ImmutableList.of(RecipeBookCategories.UNKNOWN);
-	public static final int RESULT_SLOT = 0;
-	public static final int FUEL_SLOT = 1;
-	public static final int INGREDIENT_1_SLOT = 2;
-	public static final int INGREDIENT_2_SLOT = 3;
+	public static final int INGREDIENT_1_SLOT = 0;
+	public static final int INGREDIENT_2_SLOT = 1;
+	public static final int RESULT_SLOT = 2;
+	public static final int FUEL_SLOT = 3;
 	
-	private final IInventory workbenchInv;
-	@SuppressWarnings("unused")
+	protected final IInventory workbenchInv;
 	private final IIntArray data;
 	protected final World world;
 	
@@ -56,10 +55,10 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		// Fuel:   (79,53)
 		// Result: (120,35)
 		
-		addSlot(new ResultSlot(workbenchInv, RESULT_SLOT, 120, 35));
-		addSlot(new FuelSlot(workbenchInv, FUEL_SLOT, 79, 53));
 		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_1_SLOT, 48, 17));
 		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_2_SLOT, 48, 53));
+		addSlot(new ResultSlot(workbenchInv, RESULT_SLOT, 120, 35));
+		addSlot(new FuelSlot(workbenchInv, FUEL_SLOT, 79, 53));
 		
 		for(int i = 0; i < 3; ++i) {
 			for(int j = 0; j < 9; ++j) {
@@ -70,6 +69,8 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		for(int k = 0; k < 9; ++k) {
 			addSlot(new Slot(inv, k, 8 + k * 18, 142));
 		}
+		
+		trackIntArray(data);
 	}
 	
 	public boolean canInteractWith(PlayerEntity playerIn) {
@@ -77,6 +78,8 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	}
 	
 	public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
+		// FIXME: Investigate if this works as intended.
+		
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = inventorySlots.get(index);
 		
@@ -86,7 +89,7 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 			itemstack = itemstack1.copy();
 			
 			if(index == RESULT_SLOT) {
-				if(!mergeItemStack(itemstack1, 1, 37, true)) {
+				if(!mergeItemStack(itemstack1, 4, 40, true)) {
 					return ItemStack.EMPTY;
 				}
 				
@@ -102,12 +105,12 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 				//      Else Put in Inventory
 				
 				if(AbstractFurnaceTileEntity.isFuel(itemstack1)) {
-					if(!mergeItemStack(itemstack1, 1, 4, false)) {
+					if(!mergeItemStack(itemstack1, 3, 4, false)) {
 						// Could not merge...
 					}
 				}
 				
-				if(!mergeItemStack(itemstack1, 2, 4, false)) {
+				if(!mergeItemStack(itemstack1, 0, 2, false)) {
 					if(index < 30) {
 						if(!mergeItemStack(itemstack1, 31, 40, false)) {
 							return ItemStack.EMPTY;
@@ -137,15 +140,6 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	}
 	
 	public void fillStackedContents(RecipeItemHelper itemHelperIn) {
-		System.out.println("\nWorkbench: " + workbenchInv);
-		{
-			IntSet set = itemHelperIn.itemToCount.keySet();
-			
-			for(int key : set) {
-				int count = itemHelperIn.itemToCount.get(key);
-				System.out.printf("    : key=%d, value=%d\n", key, count);
-			}
-		}
 		if(workbenchInv instanceof IRecipeHelperPopulator) {
 			((IRecipeHelperPopulator)workbenchInv).fillStackedContents(itemHelperIn);
 		}
@@ -164,7 +158,7 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	}
 	
 	public int getOutputSlot() {
-		return 0;
+		return RESULT_SLOT;
 	}
 	
 	public int getWidth() {
@@ -189,9 +183,34 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		return RECIPE_CATEGORIES;
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked" })
 	public void func_217056_a(boolean placeAll, IRecipe<? extends IInventory> recipe, ServerPlayerEntity player) {
-		(new ServerRecipePlacerZebonWorkbench(this)).place(player, recipe, placeAll);
+		(new ServerRecipePlacerZebonWorkbench<>(this)).place(player, (IRecipe<IInventory>)recipe, placeAll);
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	protected boolean isBurning() {
+		return data.get(ZebonWorkbenchTileEntity.BURN_TIME) > 0;
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	protected int getTotalCraftTime() {
+		return data.get(ZebonWorkbenchTileEntity.TOTAL_CRAFT_TIME);
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	protected int getCraftTime() {
+		return data.get(ZebonWorkbenchTileEntity.CRAFT_TIME);
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	protected int getBurnTime() {
+		return data.get(ZebonWorkbenchTileEntity.BURN_TIME);
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	protected int getTotalBurnTime() {
+		return data.get(ZebonWorkbenchTileEntity.TOTAL_BURN_TIME);
 	}
 	
 	static class FuelSlot extends Slot {
@@ -209,7 +228,6 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 			super(inventoryIn, index, xPosition, yPosition);
 		}
 		
-		@Override
 		public boolean isItemValid(ItemStack stack) {
 			return false;
 		}
@@ -221,9 +239,6 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		}
 		
 		public boolean isItemValid(ItemStack stack) {
-			// TODO: Add more recipes
-			
-			// Currently the only recipe we have is with powered rails
 			return true;
 		}
 	}

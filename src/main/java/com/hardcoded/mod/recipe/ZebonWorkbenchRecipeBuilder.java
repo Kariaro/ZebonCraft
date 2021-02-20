@@ -21,31 +21,22 @@ public class ZebonWorkbenchRecipeBuilder {
 	private final int count;
 	private Ingredient item1;
 	private Ingredient item2;
-	private final float experience;
-	private final int cookTime;
+	private final int craftTime;
 	private String group;
 	
-	private ZebonWorkbenchRecipeBuilder(IItemProvider resultIn, int countIn, float experienceIn, int cookTimeIn) {
+	private ZebonWorkbenchRecipeBuilder(IItemProvider resultIn, int countIn, int craftTimeIn) {
 		this.result = resultIn.asItem();
 		this.count = countIn;
-		this.experience = experienceIn;
-		this.cookTime = cookTimeIn;
+		this.craftTime = craftTimeIn;
 	}
 	
-	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, int cookTimeIn) {
-		return new ZebonWorkbenchRecipeBuilder(resultIn, 1, 0, cookTimeIn);
+	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, int craftTimeIn) {
+		return new ZebonWorkbenchRecipeBuilder(resultIn, 1, craftTimeIn);
 	}
 	
-	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, float experienceIn, int cookTimeIn) {
-		return new ZebonWorkbenchRecipeBuilder(resultIn, 1, experienceIn, cookTimeIn);
-	}
 	
-	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, int countIn, int cookTimeIn) {
-		return new ZebonWorkbenchRecipeBuilder(resultIn, countIn, 0, cookTimeIn);
-	}
-	
-	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, int countIn, float experienceIn, int cookTimeIn) {
-		return new ZebonWorkbenchRecipeBuilder(resultIn, countIn, experienceIn, cookTimeIn);
+	public static ZebonWorkbenchRecipeBuilder createRecipe(IItemProvider resultIn, int countIn, int craftTimeIn) {
+		return new ZebonWorkbenchRecipeBuilder(resultIn, countIn, craftTimeIn);
 	}
 	
 	public ZebonWorkbenchRecipeBuilder addCriterion(String name, ICriterionInstance criterionIn) {
@@ -77,7 +68,7 @@ public class ZebonWorkbenchRecipeBuilder {
 		
 		//this.validate(id);
 		advancementBuilder.withParentId(new ResourceLocation("recipes/root")).withCriterion("has_the_recipe", RecipeUnlockedTrigger.create(id)).withRewards(AdvancementRewards.Builder.recipe(id)).withRequirementsStrategy(IRequirementsStrategy.OR);
-		consumerIn.accept(new Result(id, result, count, group == null ? "" : group, item1, item2, advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/" + result.getGroup().getPath() + "/" + id.getPath()), experience, cookTime));
+		consumerIn.accept(new Result(id, result, count, group == null ? "" : group, item1, item2, advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/" + result.getGroup().getPath() + "/" + id.getPath()), craftTime));
 	}
 	
 	public static class Result implements IFinishedRecipe {
@@ -89,10 +80,9 @@ public class ZebonWorkbenchRecipeBuilder {
 		private final Ingredient item2;
 		private final Advancement.Builder advancementBuilder;
 		private final ResourceLocation advancementId;
-		private final float experience;
-		private final int cookTime;
+		private final int craftTime;
 		
-		public Result(ResourceLocation idIn, Item resultIn, int countIn, String groupIn, Ingredient item1In, Ingredient item2In, Advancement.Builder advancementBuilderIn, ResourceLocation advancementIdIn, float experienceIn, int cookTimeIn) {
+		public Result(ResourceLocation idIn, Item resultIn, int countIn, String groupIn, Ingredient item1In, Ingredient item2In, Advancement.Builder advancementBuilderIn, ResourceLocation advancementIdIn, int craftTimeIn) {
 			this.id = idIn;
 			this.result = resultIn;
 			this.count = countIn;
@@ -101,8 +91,7 @@ public class ZebonWorkbenchRecipeBuilder {
 			this.item2 = item2In;
 			this.advancementBuilder = advancementBuilderIn;
 			this.advancementId = advancementIdIn;
-			this.experience = experienceIn;
-			this.cookTime = cookTimeIn;
+			this.craftTime = craftTimeIn;
 		}
 		
 		@SuppressWarnings("deprecation")
@@ -120,12 +109,11 @@ public class ZebonWorkbenchRecipeBuilder {
 			}
 			
 			json.add("result", jsonobject);
-			json.addProperty("experience", experience);
-			json.addProperty("cookTime", cookTime);
+			json.addProperty("craftTime", craftTime);
 		}
 		
 		public IRecipeSerializer<?> getSerializer() {
-			return ModRecipeSerializers.ZEBON_WORKBENCH_SHAPELESS.get();
+			return ModRecipeSerializers.ZEBON_WORKBENCH.get();
 		}
 		
 		public ResourceLocation getID() { return id; }

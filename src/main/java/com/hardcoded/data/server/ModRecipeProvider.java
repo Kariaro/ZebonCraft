@@ -115,7 +115,8 @@ public class ModRecipeProvider extends RecipeProvider {
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
 			.build(consumer);
 		
-		ZebonWorkbenchRecipeBuilder.createRecipe(ModBlocks.ZEBON_POWERED_RAIL.get(), 0.5f, 20)
+		// TODO: Change the name from zebon_workbench_shapeless to zebon_workbench
+		ZebonWorkbenchRecipeBuilder.createRecipe(ModBlocks.ZEBON_POWERED_RAIL.get(), 60)
 			.setIngredients(ModItems.ZEBON_INGOT.get(), Items.POWERED_RAIL)
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
 			.build(consumer, new ResourceLocation(HardcodedMod.MOD_ID, "zebon_workbench_zebon_powered_rail"));

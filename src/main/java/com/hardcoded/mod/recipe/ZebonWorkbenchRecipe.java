@@ -21,17 +21,15 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 	protected final Ingredient item2;
 	protected final ItemStack result;
 	protected final String group;
-	protected final float experience;
-	protected final int cookTime;
+	protected final int craftTime;
 	
-	public ZebonWorkbenchRecipe(ResourceLocation idIn, String groupIn, Ingredient item1In, Ingredient item2In, ItemStack resultIn, float experienceIn, int cookTimeIn) {
+	public ZebonWorkbenchRecipe(ResourceLocation idIn, String groupIn, Ingredient item1In, Ingredient item2In, ItemStack resultIn, int craftTimeIn) {
 		this.id = idIn;
 		this.group = groupIn;
 		this.item1 = item1In;
 		this.item2 = item2In;
 		this.result = resultIn;
-		this.experience = experienceIn;
-		this.cookTime = cookTimeIn;
+		this.craftTime = craftTimeIn;
 	}
 	
 	public ItemStack getIcon() {
@@ -39,19 +37,15 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 	}
 	
 	public NonNullList<Ingredient> getIngredients() {
-		return NonNullList.from(item1, item2);
+		return NonNullList.from(Ingredient.EMPTY, item1, item2);
 	}
 	
 	public String getGroup() {
 		return group;
 	}
 	
-	public float getExperience() {
-		return experience;
-	}
-	
-	public int getCookTime() {
-		return cookTime;
+	public int getCraftTime() {
+		return craftTime;
 	}
 	
 	public IRecipeType<?> getType() {
@@ -59,7 +53,7 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 	}
 	
 	public boolean matches(IInventory inv, World worldIn) {
-		if(inv.getSizeInventory() > 4) {
+		if(inv.getSizeInventory() >= 4) {
 			ItemStack stack1 = inv.getStackInSlot(ZebonWorkbenchContainer.INGREDIENT_1_SLOT);
 			ItemStack stack2 = inv.getStackInSlot(ZebonWorkbenchContainer.INGREDIENT_2_SLOT);
 			
@@ -88,7 +82,7 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return ModRecipeSerializers.ZEBON_WORKBENCH_SHAPELESS.get();
+		return ModRecipeSerializers.ZEBON_WORKBENCH.get();
 	}
 	
 	public static class Serializer implements IRecipeSerializer<ZebonWorkbenchRecipe> {
@@ -112,20 +106,18 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 			String group = JSONUtils.getString(json, "group", "");
 			Ingredient item1 = Ingredient.deserialize(json.get("item1"));
 			Ingredient item2 = Ingredient.deserialize(json.get("item2"));
-			float experience = JSONUtils.getFloat(json, "experience");
-			int cookTime = JSONUtils.getInt(json, "cookTime");
+			int cookTime = JSONUtils.getInt(json, "craftTime");
 			ItemStack itemstack = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
-			return new ZebonWorkbenchRecipe(recipeId, group, item1, item2, itemstack, experience, cookTime);
+			return new ZebonWorkbenchRecipe(recipeId, group, item1, item2, itemstack, cookTime);
 		}
 		
 		public ZebonWorkbenchRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
 			String group = buffer.readString();
 			Ingredient item1 = Ingredient.read(buffer);
 			Ingredient item2 = Ingredient.read(buffer);
-			float experience = buffer.readFloat();
-			int cookTime = buffer.readInt();
+			int craftTime = buffer.readInt();
 			ItemStack itemstack = buffer.readItemStack();
-			return new ZebonWorkbenchRecipe(recipeId, group, item1, item2, itemstack, experience, cookTime);
+			return new ZebonWorkbenchRecipe(recipeId, group, item1, item2, itemstack, craftTime);
 		}
 		
 		public void write(PacketBuffer buffer, ZebonWorkbenchRecipe recipe) {
@@ -133,8 +125,7 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 			recipe.item1.write(buffer);
 			recipe.item2.write(buffer);
 			buffer.writeItemStack(recipe.result);
-			buffer.writeFloat(recipe.experience);
-			buffer.writeVarInt(recipe.cookTime);
+			buffer.writeVarInt(recipe.craftTime);
 		}
 	}
 	

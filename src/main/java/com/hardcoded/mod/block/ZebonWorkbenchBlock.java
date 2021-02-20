@@ -6,6 +6,7 @@ import com.hardcoded.mod.tileentity.ZebonWorkbenchTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.tileentity.TileEntity;
@@ -37,6 +38,20 @@ public class ZebonWorkbenchBlock extends Block {
 			}
 			
 			return ActionResultType.CONSUME;
+		}
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		if(!state.isIn(newState.getBlock())) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			
+			if(tileentity instanceof ZebonWorkbenchTileEntity) {
+				InventoryHelper.dropInventoryItems(worldIn, pos, (ZebonWorkbenchTileEntity)tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
+			}
+			
+			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
 	

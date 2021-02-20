@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraftforge.fml.RegistryObject;
 
 public class ModRecipeSerializers {
-	public static final RegistryObject<IRecipeSerializer<ZebonWorkbenchRecipe>> ZEBON_WORKBENCH_SHAPELESS = register("zebon_workbench_shapeless",
+	public static final RegistryObject<IRecipeSerializer<ZebonWorkbenchRecipe>> ZEBON_WORKBENCH = register("zebon_workbench",
 			() -> new ZebonWorkbenchRecipe.Serializer());
 	
 	private static <T extends IRecipeSerializer<?>> RegistryObject<T> register(String name, Supplier<T> block) {
