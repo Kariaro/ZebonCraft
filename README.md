@@ -31,14 +31,14 @@ TileEntity                    : DONE
 Custom Render                 : DONE
 Rails                         : DONE
 Inventories                   : DONE
+GUI                           : 50%
+Custom ISidedInventory        : 10%
+Network Packets               : 10%
 Potions                       :
 Particles                     :
 Effects                       :
-GUI                           : 50%
 Custom Keybinds               :
 Overlays                      :
-Custom ISidedInventory        : 10%
-Network Packets               : 10%
 Events                        :
 Redstone                      :
 Use Forge Fluid               :
@@ -49,8 +49,8 @@ Use Forge RF                  :
 ```
 Custom Recipe Serializer      : DONE
 Custom Container Screen       : DONE
-Use the recipe button         : 50%
 Custom Crafting System        : DONE
+Use the recipe button         : DONE
 Custom Statistics             :
 Custom Capabilities           :
 Custom Entity                 :

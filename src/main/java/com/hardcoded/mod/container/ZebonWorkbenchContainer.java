@@ -55,10 +55,10 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		// Fuel:   (79,53)
 		// Result: (120,35)
 		
-		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_1_SLOT, 48, 17));
-		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_2_SLOT, 48, 53));
-		addSlot(new ResultSlot(workbenchInv, RESULT_SLOT, 120, 35));
-		addSlot(new FuelSlot(workbenchInv, FUEL_SLOT, 79, 53));
+		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_1_SLOT, 45, 17));
+		addSlot(new IngredientSlot(workbenchInv, INGREDIENT_2_SLOT, 45, 53));
+		addSlot(new ResultSlot(workbenchInv, RESULT_SLOT, 123, 35));
+		addSlot(new FuelSlot(workbenchInv, FUEL_SLOT, 76, 53));
 		
 		for(int i = 0; i < 3; ++i) {
 			for(int j = 0; j < 9; ++j) {
@@ -146,7 +146,7 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	}
 	
 	protected boolean hasRecipe(ItemStack stack1, ItemStack stack2) {
-		return world.getRecipeManager().getRecipe(ModTags.ZEBON_RECIPES, new Inventory(stack1, stack2), world).isPresent();
+		return world.getRecipeManager().getRecipe(ModTags.ZEBON_WORKBENCH, new Inventory(stack1, stack2), world).isPresent();
 	}
 	
 	public void clear() {
@@ -183,7 +183,7 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 		return RECIPE_CATEGORIES;
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings("unchecked")
 	public void func_217056_a(boolean placeAll, IRecipe<? extends IInventory> recipe, ServerPlayerEntity player) {
 		(new ServerRecipePlacerZebonWorkbench<>(this)).place(player, (IRecipe<IInventory>)recipe, placeAll);
 	}

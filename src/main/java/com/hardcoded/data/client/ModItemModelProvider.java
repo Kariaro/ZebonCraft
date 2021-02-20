@@ -66,6 +66,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 		builder(itemGenerated, "zebon_leggings");
 		builder(itemGenerated, "zebon_boots");
 		
+		// Dust
+		builder(itemGenerated, "blue_grit");
+		builder(itemGenerated, "purple_dust");
+		
 		
 		builder(itemGenerated, "zebon_horse_armor");
 		

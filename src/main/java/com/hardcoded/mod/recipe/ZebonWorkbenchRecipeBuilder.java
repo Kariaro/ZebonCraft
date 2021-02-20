@@ -71,6 +71,11 @@ public class ZebonWorkbenchRecipeBuilder {
 		consumerIn.accept(new Result(id, result, count, group == null ? "" : group, item1, item2, advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/" + result.getGroup().getPath() + "/" + id.getPath()), craftTime));
 	}
 	
+	@SuppressWarnings("deprecation")
+	public void build(Consumer<IFinishedRecipe> consumerIn) {
+		build(consumerIn, Registry.ITEM.getKey(this.result));
+	}
+	
 	public static class Result implements IFinishedRecipe {
 		private final ResourceLocation id;
 		private final Item result;

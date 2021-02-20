@@ -11,7 +11,7 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModItems {
 	public static final RegistryObject<Item> ZEBON_INGOT = Registration.ITEMS.register("zebon_ingot", () ->
-			new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+			new Item(new Item.Properties().group(ModItemGroups.ZEBON)));
 	
 	public static final RegistryObject<Item> ZEBON_ZVORD = Registration.ITEMS.register("zebon_zvord", () ->
 			new ZebonSword(ModToolTiers.ZEBON_TIER, 2, 1, new Item.Properties().group(ModItemGroups.ZEBON)));
@@ -33,10 +33,14 @@ public class ModItems {
 	public static final RegistryObject<Item> ZEBON_BOOTS = Registration.ITEMS.register("zebon_boots", () ->
 			new ZebonArmor(EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.ZEBON)));
 	
-	// Zebon
 	public static final RegistryObject<Item> ZEBON_HORSE_ARMOR = Registration.ITEMS.register("zebon_horse_armor", () ->
 			new HorseArmorItem(5, new ResourceLocation(HardcodedMod.MOD_ID, "textures/entity/horse/armor/horse_armor_zebon.png"), new Item.Properties().group(ModItemGroups.ZEBON)));
-
+	
+	public static final RegistryObject<Item> BLUE_GRIT = Registration.ITEMS.register("blue_grit", () ->
+			new Item(new Item.Properties().group(ModItemGroups.ZEBON)));
+	public static final RegistryObject<Item> PURPLE_DUST = Registration.ITEMS.register("purple_dust", () ->
+			new Item(new Item.Properties().group(ModItemGroups.ZEBON)));
+	
 	
 	static void register() {
 		

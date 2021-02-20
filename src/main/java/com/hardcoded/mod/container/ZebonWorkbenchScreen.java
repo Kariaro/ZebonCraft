@@ -4,7 +4,7 @@ import com.hardcoded.mod.HardcodedMod;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import net.minecraft.client.gui.recipebook.AbstractRecipeBookGui;
+import net.minecraft.client.gui.recipebook.IRecipeShownListener;
 import net.minecraft.client.gui.recipebook.RecipeBookGui;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.ImageButton;
@@ -17,10 +17,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContainer> {
+public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContainer> implements IRecipeShownListener {
 	private static final ResourceLocation ZEBON_WORKBENCH_GUI_TEXTURES = new ResourceLocation(HardcodedMod.MOD_ID, "textures/gui/container/zebon_workbench.png");
 	private static final ResourceLocation BUTTON_TEXTURE = new ResourceLocation("minecraft", "textures/gui/recipe_button.png");
-	public final AbstractRecipeBookGui recipeGui;
+	public final ZebonWorkbenchRecipeGui recipeGui;
 	private boolean widthTooNarrowIn;
 	
 	public ZebonWorkbenchScreen(ZebonWorkbenchContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
@@ -61,7 +61,7 @@ public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContaine
 			super.render(matrixStack, mouseX, mouseY, partialTicks);
 			recipeGui.func_230477_a_(matrixStack, guiLeft, guiTop, true, partialTicks);
 		}
-
+		
 		renderHoveredTooltip(matrixStack, mouseX, mouseY);
 		recipeGui.func_238924_c_(matrixStack, guiLeft, guiTop, mouseX, mouseY);
 	}
@@ -75,17 +75,13 @@ public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContaine
 		int j = (height - ySize) / 2;
 		blit(matrixStack, i, j, 0, 0, xSize, ySize);
 		
-		// AbstractFurnaceScreen
-		// AbstractFurnaceTileEntity
-		
-		// FIXME: Burning time is now showing properly
 		if(container.isBurning()) {
 			int total_burn_time = container.getTotalBurnTime();
 			float v0 = (container.getBurnTime() + 1) / (total_burn_time + 0.0f);
 			int k = (int)(v0 * 12);
 			
 			if(k > 12) k = 12;
-			blit(matrixStack, i + 80, j + 35 + 12 - k, 176, 12 - k, 14, k + 1);
+			blit(matrixStack, i + 77, j + 35 + 12 - k, 176, 12 - k, 14, k + 1);
 		}
 		
 		if(container.getCraftTime() > 0) {
@@ -96,14 +92,13 @@ public class ZebonWorkbenchScreen extends ContainerScreen<ZebonWorkbenchContaine
 				arrow_2 = 22;
 			} else {
 				float v1 = (container.getCraftTime() + 1) / (container.getTotalCraftTime() + 0.0f);
-				arrow_1 = Math.min((int)(63 * v1), 24); // 24 pixels
-				arrow_2 = Math.min((int)(63 * v1) - 41, 22); // 24 pixels
+				arrow_1 = Math.min((int)(63 * v1), 24);      // 24 pixels
+				arrow_2 = Math.min((int)(63 * v1) - 41, 22); // 22 pixels
 				if(arrow_2 < 0) arrow_2 = 0;
 			}
 			
-			// System.out.println(v0);
-			blit(matrixStack, i + 54, j + 35, 176, 14, arrow_1, 15); // 24
-			blit(matrixStack, i + 95, j + 38, 176, 30, arrow_2, 8);  // 22
+			blit(matrixStack, i + 51, j + 35, 176, 14, arrow_1, 15);
+			blit(matrixStack, i + 92, j + 38, 176, 30, arrow_2, 8);
 		}
 	}
 	

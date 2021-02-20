@@ -39,6 +39,12 @@ public class ModRecipeProvider extends RecipeProvider {
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModBlocks.ZEBON_BLOCK.get()))
 			.build(consumer, new ResourceLocation(HardcodedMod.MOD_ID, "zebon_ingot_shapeless"));
 		
+		ShapelessRecipeBuilder.shapelessRecipe(ModItems.BLUE_GRIT.get())
+			.addIngredient(ModBlocks.ZRASS.get())
+			.setGroup(HardcodedMod.MOD_ID)
+			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModBlocks.ZRASS.get()))
+			.build(consumer);
+			
 		ShapedRecipeBuilder.shapedRecipe(ModItems.ZEBON_ZVORD.get())
 			.patternLine("  x")
 			.patternLine(" x ")
@@ -115,11 +121,15 @@ public class ModRecipeProvider extends RecipeProvider {
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
 			.build(consumer);
 		
-		// TODO: Change the name from zebon_workbench_shapeless to zebon_workbench
-		ZebonWorkbenchRecipeBuilder.createRecipe(ModBlocks.ZEBON_POWERED_RAIL.get(), 60)
+		ZebonWorkbenchRecipeBuilder.createRecipe(ModBlocks.ZEBON_POWERED_RAIL.get(), 200)
 			.setIngredients(ModItems.ZEBON_INGOT.get(), Items.POWERED_RAIL)
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.ZEBON_INGOT.get()))
-			.build(consumer, new ResourceLocation(HardcodedMod.MOD_ID, "zebon_workbench_zebon_powered_rail"));
+			.build(consumer);
+		
+		ZebonWorkbenchRecipeBuilder.createRecipe(ModItems.PURPLE_DUST.get(), 100)
+			.setIngredients(Items.REDSTONE, ModItems.BLUE_GRIT.get())
+			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModItems.BLUE_GRIT.get()))
+			.build(consumer);
 	}
 	
 	private void simpleRecipe(String a, String b, String c, char key, IItemProvider result, IItemProvider criteria, Consumer<IFinishedRecipe> consumer) {

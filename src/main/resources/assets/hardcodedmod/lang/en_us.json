@@ -18,7 +18,6 @@
   "itemGroup.zeboncraft": "ZebonCraft",
   "item.hardcodedmod.zebon_ingot": "Zebon Ingot",
   
-  
   "item.hardcodedmod.zebon_zvord": "Zebon Zvord",
   "item.hardcodedmod.zebon_pickaxe": "Zebon Pickaxe",
   "item.hardcodedmod.zebon_axe": "Zebon Axe",
@@ -30,6 +29,9 @@
   "item.hardcodedmod.zebon_leggings": "Zebon Leggings",
   "item.hardcodedmod.zebon_boots": "Zebon Boots",
   "item.hardcodedmod.zebon_horse_armor": "Zebon Horse Armor",
+  
+  "item.hardcodedmod.blue_grit": "Blue Grit",
+  "item.hardcodedmod.purple_dust": "Purple Dust",
   
   "container.zebon_workbench": "Zebon Workbench",
   "gui.recipebook.toggleRecipes.zebon_workbench": "Showing Craftable"

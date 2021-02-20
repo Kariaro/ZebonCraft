@@ -46,20 +46,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 			.add(true, RailShape.EAST_WEST, "zebon_powered_rail_on", 90)
 			.add(true, RailShape.NORTH_SOUTH, "zebon_powered_rail_on")
 			.build();
-			
-//		getVariantBuilder(ModBlocks.ZEBON_POWERED_RAIL.get())
-////			.setModels(new PartialBlockstate().with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_EAST), new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail_ne"))))
-////			.setModels(new PartialBlockstate().with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_EAST), new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail_ne"))))
-//			
-//			.partialState().with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_EAST)
-//					.modelForState().modelFile(models().getExistingFile(modLoc("block/zebon_powered_rail_ne"))).rotationY(90).addModel()
-//					
-//			.partialState().addModels(new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail_ne")))).with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_NORTH)
-//			.partialState().addModels(new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail_sw")))).with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_SOUTH)
-//			.partialState().addModels(new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail_sw")))).with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.ASCENDING_WEST)
-//			.partialState().addModels(new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail")))).with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.EAST_WEST)
-//			.partialState().addModels(new ConfiguredModel(models().getExistingFile(modLoc("block/zebon_powered_rail")))).with(PoweredRailBlock.POWERED, false).with(PoweredRailBlock.SHAPE, RailShape.NORTH_SOUTH);
-		;
 	}
 	
 	private ModelFile cross(Block block) {

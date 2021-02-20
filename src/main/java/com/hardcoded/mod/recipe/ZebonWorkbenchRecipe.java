@@ -49,7 +49,7 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 	}
 	
 	public IRecipeType<?> getType() {
-		return ModTags.ZEBON_RECIPES;
+		return ModTags.ZEBON_WORKBENCH;
 	}
 	
 	public boolean matches(IInventory inv, World worldIn) {

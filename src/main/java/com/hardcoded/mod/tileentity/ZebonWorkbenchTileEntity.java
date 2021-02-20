@@ -13,6 +13,7 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
@@ -21,6 +22,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 // FIXME: Remove all xp related values from the ZebonWorkbenchRecipe
 public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
@@ -49,22 +55,10 @@ public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISid
 		
 		public void set(int index, int value) {
 			switch(index) {
-				case BURN_TIME: {
-					burnTime = value;
-					break;
-				}
-				case TOTAL_BURN_TIME: {
-					totalBurnTime = value;
-					break;
-				}
-				case CRAFT_TIME: {
-					craftingTime = value;
-					break;
-				}
-				case TOTAL_CRAFT_TIME: {
-					totalCraftingTime = value;
-					break;
-				}
+				case BURN_TIME: burnTime = value; break;
+				case TOTAL_BURN_TIME: totalBurnTime = value; break;
+				case CRAFT_TIME: craftingTime = value; break;
+				case TOTAL_CRAFT_TIME: totalCraftingTime = value; break;
 			}
 		}
 		
@@ -127,6 +121,16 @@ public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISid
 		return ItemStackHelper.getAndRemove(items, index);
 	}
 	
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		switch(index) {
+			case ZebonWorkbenchContainer.FUEL_SLOT: return FurnaceTileEntity.isFuel(stack);
+			case ZebonWorkbenchContainer.INGREDIENT_1_SLOT:
+			case ZebonWorkbenchContainer.INGREDIENT_2_SLOT: return true;
+		}
+		
+		return false;
+	}
+	
 	public boolean isUsableByPlayer(PlayerEntity player) {
 		return true;
 	}
@@ -138,17 +142,15 @@ public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISid
 	public void tick() {
 		boolean flag = false;
 		
-		// If we are burning then reduce the burning time
 		if(isBurning()) {
 			burnTime--;
 		}
 		
-		// If the world is not remote
 		if(!world.isRemote) {
 			ItemStack itemstack = items.get(ZebonWorkbenchContainer.FUEL_SLOT);
 			
 			if(isBurning() || !itemstack.isEmpty() && (!items.get(ZebonWorkbenchContainer.INGREDIENT_1_SLOT).isEmpty() && !items.get(ZebonWorkbenchContainer.INGREDIENT_2_SLOT).isEmpty())) {
-				ZebonWorkbenchRecipe irecipe = (ZebonWorkbenchRecipe)world.getRecipeManager().getRecipe(ModTags.ZEBON_RECIPES, this, world).orElse(null);
+				ZebonWorkbenchRecipe irecipe = (ZebonWorkbenchRecipe)world.getRecipeManager().getRecipe(ModTags.ZEBON_WORKBENCH, this, world).orElse(null);
 				
 				// If we are not burning and the recipe is valid
 				if(!isBurning() && canCraft(irecipe)) {
@@ -225,7 +227,7 @@ public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISid
 	}
 	
 	protected int calculateCraftingTime() {
-		return world.getRecipeManager().getRecipe(ModTags.ZEBON_RECIPES, this, world).map(ZebonWorkbenchRecipe::getCraftTime).orElse(200);
+		return world.getRecipeManager().getRecipe(ModTags.ZEBON_WORKBENCH, this, world).map(ZebonWorkbenchRecipe::getCraftTime).orElse(200);
 	}
 	
 	public void read(BlockState state, CompoundNBT nbt) {
@@ -259,18 +261,39 @@ public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISid
 	}
 	
 	public boolean canInsertItem(int index, ItemStack itemStackIn, Direction direction) {
-		switch(direction) {
-			case DOWN: return false;
-			case UP: return index == ZebonWorkbenchContainer.RESULT_SLOT;
-			default:
+		return isItemValidForSlot(index, itemStackIn);
+	}
+	
+	public boolean canExtractItem(int index, ItemStack stack, Direction direction) {
+		if(direction == Direction.DOWN && index == ZebonWorkbenchContainer.RESULT_SLOT) {
+			return true;
 		}
 		
 		return false;
 	}
 	
-	public boolean canExtractItem(int index, ItemStack stack, Direction direction) {
-		if(direction != Direction.DOWN) return true;
-		return false;
+	private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+	
+	public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction facing) {
+		if(!removed && facing == null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if(facing == Direction.UP) {
+				return handlers[0].cast();
+			} else if(facing == Direction.DOWN) {
+				return handlers[1].cast();
+			} else {
+				return handlers[2].cast();
+			}
+		}
+		
+		return super.getCapability(capability, facing);
+	}
+	
+	protected void invalidateCaps() {
+		super.invalidateCaps();
+		
+		for(int x = 0; x < handlers.length; x++) {
+			handlers[x].invalidate();
+		}
 	}
 	
 	public int getBurnTime() {

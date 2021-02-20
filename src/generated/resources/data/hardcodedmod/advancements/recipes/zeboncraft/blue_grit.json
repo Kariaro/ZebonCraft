@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "hardcodedmod:zebon_workbench_zebon_powered_rail"
+      "hardcodedmod:blue_grit"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "hardcodedmod:zebon_ingot"
+            "item": "hardcodedmod:zrass"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "hardcodedmod:zebon_workbench_zebon_powered_rail"
+        "recipe": "hardcodedmod:blue_grit"
       }
     }
   },

@@ -15,7 +15,7 @@ import net.minecraftforge.common.Tags.IOptionalNamedTag;
 
 @SuppressWarnings("unused")
 public class ModTags {
-	public static final IRecipeType<ZebonWorkbenchRecipe> ZEBON_RECIPES = IRecipeType.register("hardcodedmod:zebon_workbench");
+	public static final IRecipeType<ZebonWorkbenchRecipe> ZEBON_WORKBENCH = IRecipeType.register("hardcodedmod:zebon_workbench");
 	
 	public static class Blocks {
 		private static IOptionalNamedTag<Block> tag(String name) {
