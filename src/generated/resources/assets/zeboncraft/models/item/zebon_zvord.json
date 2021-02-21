@@ -1,0 +1,63 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "zeboncraft:item/zebon_zvord"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.125
+      },
+      "model": "zeboncraft:item/charge_sword_0"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.25
+      },
+      "model": "zeboncraft:item/charge_sword_1"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.375
+      },
+      "model": "zeboncraft:item/charge_sword_2"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.5
+      },
+      "model": "zeboncraft:item/charge_sword_3"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.625
+      },
+      "model": "zeboncraft:item/charge_sword_4"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.75
+      },
+      "model": "zeboncraft:item/charge_sword_5"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 0.0,
+        "zeboncraft:charge": 0.875
+      },
+      "model": "zeboncraft:item/charge_sword_6"
+    },
+    {
+      "predicate": {
+        "zeboncraft:charging": 1.0
+      },
+      "model": "zeboncraft:item/charge_sword_7"
+    }
+  ]
+}

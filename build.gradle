@@ -15,8 +15,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.0'
-group = 'com.hardcoded.hardcodedmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'hardcodedmod'
+group = 'com.hardcoded.zeboncraft' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'zeboncraft'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -39,13 +39,13 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                hardcodedmod {
+                zeboncraft {
                     source sourceSets.main
                 }
             }
@@ -55,13 +55,13 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                hardcodedmod {
+                zeboncraft {
                     source sourceSets.main
                 }
             }
@@ -71,18 +71,18 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'hardcodedmod', '--all',
+            args '--mod', 'zeboncraft', '--all',
             		'--existing', file('src/main/resources').toString(),
             		'--existing', file('src/generated/resources').toString(),
             		'--output', file('src/generated/resources/')
 
             mods {
-                hardcodedmod {
+                zeboncraft {
                     source sourceSets.main
                 }
             }
@@ -124,7 +124,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "hardcodedmod",
+            "Specification-Title": "zeboncraft",
             "Specification-Vendor": "examplemodsareus",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,

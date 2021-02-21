@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "zeboncraft",
+  "pattern": [
+    "x x",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "zeboncraft:zebon_ingot"
+    }
+  },
+  "result": {
+    "item": "zeboncraft:zebon_chestplate"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "zeboncraft:item/charge_sword_0"
+  }
+}

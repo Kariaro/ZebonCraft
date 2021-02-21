@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "zeboncraft",
+  "pattern": [
+    "xx ",
+    "xx ",
+    "   "
+  ],
+  "key": {
+    "x": {
+      "item": "zeboncraft:dried_zrirt"
+    }
+  },
+  "result": {
+    "item": "zeboncraft:dried_polished_zrirt"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "loader": "forge:obj",
+  "flip-v": true,
+  "ambientToFullbright": false,
+  "model": "zeboncraft:models/block/zebon_sink.obj"
+}

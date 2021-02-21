@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "dried_polished_zrirt",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "zeboncraft:dried_polished_zrirt"
+        }
+      ]
+    }
+  ]
+}

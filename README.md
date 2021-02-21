@@ -31,18 +31,19 @@ TileEntity                    : DONE
 Custom Render                 : DONE
 Rails                         : DONE
 Inventories                   : DONE
-GUI                           : 50%
+GUI                           : DONE
+Particles                     : DONE
+Effects                       : DONE
 Custom ISidedInventory        : 10%
 Network Packets               : 10%
 Potions                       :
-Particles                     :
-Effects                       :
 Custom Keybinds               :
 Overlays                      :
 Events                        :
 Redstone                      :
 Use Forge Fluid               :
 Use Forge RF                  :
+Custom Sound                  :
 ```
 
 ### Intermediate
@@ -56,6 +57,7 @@ Custom Capabilities           :
 Custom Entity                 :
 TileEntity (Network Packets)  :
 Add a custom Dimension        :
+Multiblock structures         :
 ```
 
 ### Advanced stuff

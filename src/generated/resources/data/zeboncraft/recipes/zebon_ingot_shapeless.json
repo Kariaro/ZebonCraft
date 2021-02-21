@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "zeboncraft",
+  "ingredients": [
+    {
+      "item": "zeboncraft:zebon_block"
+    }
+  ],
+  "result": {
+    "item": "zeboncraft:zebon_ingot",
+    "count": 9
+  }
+}

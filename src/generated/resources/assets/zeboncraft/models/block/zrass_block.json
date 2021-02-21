@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "zeboncraft:block/zrirt",
+    "up": "zeboncraft:block/zrass_block_top",
+    "north": "zeboncraft:block/zrass_block_side",
+    "south": "zeboncraft:block/zrass_block_side",
+    "east": "zeboncraft:block/zrass_block_side",
+    "west": "zeboncraft:block/zrass_block_side",
+    "particle": "zeboncraft:block/zrass_block_side"
+  }
+}

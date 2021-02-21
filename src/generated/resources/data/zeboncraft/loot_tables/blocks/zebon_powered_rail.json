@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "zebon_powered_rail",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "zeboncraft:zebon_powered_rail"
+        }
+      ]
+    }
+  ]
+}

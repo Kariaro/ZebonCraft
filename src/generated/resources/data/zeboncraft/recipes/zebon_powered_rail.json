@@ -1,0 +1,13 @@
+{
+  "type": "zeboncraft:zebon_workbench",
+  "item1": {
+    "item": "zeboncraft:zebon_ingot"
+  },
+  "item2": {
+    "item": "minecraft:powered_rail"
+  },
+  "result": {
+    "item": "zeboncraft:zebon_powered_rail"
+  },
+  "craftTime": 200
+}

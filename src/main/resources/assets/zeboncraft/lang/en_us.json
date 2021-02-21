@@ -1,0 +1,40 @@
+{
+  "block.zeboncraft.zebon_ore": "Zebon Ore",
+  "block.zeboncraft.zebon_block": "Zebon Block",
+  "block.zeboncraft.zrass_block": "Zrass block",
+  "block.zeboncraft.zrirt": "Zrirt",
+  "block.zeboncraft.dried_zrirt": "Dried Zrirt",
+  "block.zeboncraft.dried_polished_zrirt": "Dried Polished Zrirt",
+  "block.zeboncraft.zappling": "Zappling",
+  "block.zeboncraft.zrass": "Zrass",
+  "block.zeboncraft.ztem_block": "Ztem Block",
+  "block.zeboncraft.zeves": "Zeves",
+  "block.zeboncraft.zebon_powered_rail": "Zebon Powered Rail",
+  "block.zeboncraft.zebon_workbench": "Zebon Workbench",
+  "block.zeboncraft.zrate_tile_entity": "Zrate Dev",
+  "block.zeboncraft.zebon_sink": "Zebon Sink",
+  
+  "enchantment.zeboncraft.znchant": "Znchant",
+  
+  "effect.zeboncraft.spores": "Spores",
+  
+  "itemGroup.zeboncraft": "ZebonCraft",
+  
+  "item.zeboncraft.zebon_ingot": "Zebon Ingot",
+  "item.zeboncraft.zebon_zvord": "Zebon Zvord",
+  "item.zeboncraft.zebon_pickaxe": "Zebon Pickaxe",
+  "item.zeboncraft.zebon_axe": "Zebon Axe",
+  "item.zeboncraft.zebon_shovel": "Zebon Shovel",
+  "item.zeboncraft.zebon_hoe": "Zebon Hoe",
+  "item.zeboncraft.zebon_helmet": "Zebon Helmet",
+  "item.zeboncraft.zebon_chestplate": "Zebon Chestplate",
+  "item.zeboncraft.zebon_leggings": "Zebon Leggings",
+  "item.zeboncraft.zebon_boots": "Zebon Boots",
+  "item.zeboncraft.zebon_horse_armor": "Zebon Horse Armor",
+  "item.zeboncraft.blue_grit": "Blue Grit",
+  "item.zeboncraft.purple_dust": "Purple Dust",
+  
+  "container.zebon_workbench": "Zebon Workbench",
+  
+  "gui.recipebook.toggleRecipes.zebon_workbench": "Showing Craftable"
+}

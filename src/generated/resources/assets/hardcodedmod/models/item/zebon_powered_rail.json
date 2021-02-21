@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "hardcodedmod:block/zebon_powered_rail"
-  }
-}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "zeboncraft:block/dried_polished_zrirt"
+  }
+}

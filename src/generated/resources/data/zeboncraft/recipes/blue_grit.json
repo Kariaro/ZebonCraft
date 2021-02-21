@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "zeboncraft",
+  "ingredients": [
+    {
+      "item": "zeboncraft:zrass"
+    }
+  ],
+  "result": {
+    "item": "zeboncraft:blue_grit"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "zeboncraft:zebon_workbench",
+  "item1": {
+    "item": "minecraft:redstone"
+  },
+  "item2": {
+    "item": "zeboncraft:blue_grit"
+  },
+  "result": {
+    "item": "zeboncraft:purple_dust"
+  },
+  "craftTime": 100
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "hardcodedmod:zrirt"
-  },
-  "result": "hardcodedmod:dried_zrirt",
-  "experience": 0.3,
-  "cookingtime": 160
-}
