@@ -6,6 +6,7 @@ import com.hardcoded.zeboncraft.recipe.ZebonWorkbenchRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -15,9 +16,11 @@ import net.minecraftforge.common.Tags.IOptionalNamedTag;
 
 @SuppressWarnings("unused")
 public class ModTags {
-	public static final IRecipeType<ZebonWorkbenchRecipe> ZEBON_WORKBENCH = IRecipeType.register("hardcodedmod:zebon_workbench");
+	public static final IRecipeType<ZebonWorkbenchRecipe> ZEBON_WORKBENCH = registerRecipeType("zebon_workbench");
 	
 	public static class Blocks {
+		public static final IOptionalNamedTag<Block> MUSHROOMS = tag("mushrooms");
+		
 		private static IOptionalNamedTag<Block> tag(String name) {
 			return BlockTags.createOptional(new ResourceLocation(ZebonCraft.MOD_ID, name));
 		}
@@ -37,4 +40,9 @@ public class ModTags {
 	
 	
 	static void register() {}
+	
+	@SuppressWarnings("unchecked")
+	private static <T extends IRecipe<?>> IRecipeType<T> registerRecipeType(String name) {
+		return (IRecipeType<T>)IRecipeType.register(ZebonCraft.MOD_ID + ":" + name);
+	}
 }

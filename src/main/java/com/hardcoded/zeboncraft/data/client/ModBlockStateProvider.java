@@ -28,8 +28,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 		simpleBlock(ModBlocks.DRIED_ZRIRT.get());
 		simpleBlock(ModBlocks.DRIED_POLISHED_ZRIRT.get());
 		simpleBlock(ModBlocks.ZEVES.get());
+		
+		// Plants
 		simpleBush(ModBlocks.ZRASS.get());
 		simpleBush(ModBlocks.ZAPPLING.get());
+		
+		// Mushrooms
+		simpleBush(ModBlocks.ORANGE_CAP.get());
+		simpleBush(ModBlocks.TALL_MUSHROOM.get());
+		simpleBush(ModBlocks.GLOWING_YELLOW_CAP.get());
 		
 		getRailBuilder(ModBlocks.ZEBON_POWERED_RAIL.get())
 			.add(false, RailShape.ASCENDING_EAST, "zebon_powered_rail_raised_ne", 90)

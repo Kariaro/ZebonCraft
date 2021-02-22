@@ -22,5 +22,10 @@ public class ModLootTableProvider extends BaseLootTableProvider {
 		
 		register(ModBlocks.ZEBON_POWERED_RAIL.get(), create("zebon_powered_rail", ModBlocks.ZEBON_POWERED_RAIL.get()));
 		register(ModBlocks.ZEBON_WORKBENCH.get(), create("zebon_workbench", ModBlocks.ZEBON_WORKBENCH.get()));
+		
+		
+		register(ModBlocks.ORANGE_CAP.get(), create("orange_cap", ModBlocks.ORANGE_CAP.get()));
+		register(ModBlocks.TALL_MUSHROOM.get(), create("tall_mushroom", ModBlocks.TALL_MUSHROOM.get()));
+		register(ModBlocks.GLOWING_YELLOW_CAP.get(), create("glowing_yellow_cap", ModBlocks.GLOWING_YELLOW_CAP.get()));
 	}
 }

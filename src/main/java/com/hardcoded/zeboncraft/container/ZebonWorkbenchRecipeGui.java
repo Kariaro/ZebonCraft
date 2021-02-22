@@ -1,6 +1,5 @@
 package com.hardcoded.zeboncraft.container;
 
-import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -9,7 +8,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.client.gui.AbstractGui;
-import net.minecraft.client.gui.recipebook.*;
+import net.minecraft.client.gui.recipebook.RecipeBookGui;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.Item;
@@ -26,20 +25,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ZebonWorkbenchRecipeGui extends RecipeBookGui {
 	private static final ITextComponent text = new TranslationTextComponent("gui.recipebook.toggleRecipes.zebon_workbench");
-	private static final Field FIELD_RECIPE_TABS;
-	
-	static {
-		Field field_recipe_tabs = null;
-		
-		try {
-			field_recipe_tabs = RecipeBookGui.class.getDeclaredField("recipeTabs");
-			field_recipe_tabs.setAccessible(true);
-		} catch(NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
-		}
-		
-		FIELD_RECIPE_TABS = field_recipe_tabs;
-	}
 	
 	@SuppressWarnings("deprecation")
 	private final Set<Item> ghostFuels = AbstractFurnaceTileEntity.getBurnTimes().keySet();
@@ -48,19 +33,8 @@ public class ZebonWorkbenchRecipeGui extends RecipeBookGui {
 	private float ghostFuelTime;
 	protected Slot ghostFuelSlot;
 	
-	private final List<RecipeTabToggleWidget> recipeTabs;
-	
-	@SuppressWarnings("unchecked")
 	public ZebonWorkbenchRecipeGui() {
-		Object tabs = null;
 		
-		try {
-			tabs = FIELD_RECIPE_TABS.get(this);
-		} catch(IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		
-		recipeTabs = (List<RecipeTabToggleWidget>)tabs;
 	}
 	
 	public void slotClicked(Slot slotIn) {
@@ -91,13 +65,13 @@ public class ZebonWorkbenchRecipeGui extends RecipeBookGui {
 	
 	public void initSearchBar(boolean widthTooNarrowIn) {
 		super.initSearchBar(widthTooNarrowIn);
-		recipeTabs.clear();
+		
+		if(recipeTabs != null)
+			recipeTabs.clear();
 	}
 	
 	public void func_230477_a_(MatrixStack stack, int x, int y, boolean isResultSlotZero, float deltaTime) {
 		super.func_230477_a_(stack, x, y, isResultSlotZero, deltaTime);
-		
-		// System.out.println((ghostRecipe == null ? "NULL":ghostRecipe.getRecipe()) + ", " + ghostFuelSlot);
 		
 		if(ghostRecipe == null || ghostRecipe.getRecipe() == null) {
 			ghostFuelSlot = null;
@@ -118,14 +92,8 @@ public class ZebonWorkbenchRecipeGui extends RecipeBookGui {
 		}
 	}
 	
-	// This is the toggle button text component
 	public ITextComponent func_230479_g_() {
 		return text;
-	}
-	
-	// TODO: Remove
-	public boolean mouseClicked(double mouseX, double mouseY, int button) {
-		return super.mouseClicked(mouseX, mouseY, button);
 	}
 	
 	private Item getFuelGhostIcon() {

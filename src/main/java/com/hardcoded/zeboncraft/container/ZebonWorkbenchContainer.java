@@ -184,7 +184,7 @@ public class ZebonWorkbenchContainer extends RecipeBookContainer<IInventory> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void func_217056_a(boolean placeAll, IRecipe<? extends IInventory> recipe, ServerPlayerEntity player) {
+	public void func_217056_a(boolean placeAll, IRecipe<?> recipe, ServerPlayerEntity player) {
 		(new ServerRecipePlacerZebonWorkbench<>(this)).place(player, (IRecipe<IInventory>)recipe, placeAll);
 	}
 	

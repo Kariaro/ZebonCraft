@@ -14,12 +14,15 @@
   "block.zeboncraft.zrate_tile_entity": "Zrate Dev",
   "block.zeboncraft.zebon_sink": "Zebon Sink",
   
-  "enchantment.zeboncraft.znchant": "Znchant",
+  "block.zeboncraft.orange_cap": "Orange Cap",
+  "block.zeboncraft.glowing_yellow_cap": "Glowing Yellow Cap",
+  "block.zeboncraft.tall_mushroom": "Tall Mushroom",
   
-  "effect.zeboncraft.spores": "Spores",
   
-  "itemGroup.zeboncraft": "ZebonCraft",
-  
+  "item.zeboncraft.pile_of_mushrooms": "Pile Of Mushrooms",
+  "item.minecraft.potion.effect.antidote_potion": "Antidote Potion",
+  "item.minecraft.splash_potion.effect.antidote_potion": "Antidote Splash Potion",
+  "item.minecraft.lingering_potion.effect.antidote_potion": "Antidote Lingering Potion",
   "item.zeboncraft.zebon_ingot": "Zebon Ingot",
   "item.zeboncraft.zebon_zvord": "Zebon Zvord",
   "item.zeboncraft.zebon_pickaxe": "Zebon Pickaxe",
@@ -34,7 +37,20 @@
   "item.zeboncraft.blue_grit": "Blue Grit",
   "item.zeboncraft.purple_dust": "Purple Dust",
   
+  
+  "enchantment.zeboncraft.znchant": "Znchant",
+  "enchantment.zeboncraft.air_filter": "Air Filter",
+  
+  
+  "effect.zeboncraft.spores": "Spores",
+  "effect.zeboncraft.antidote": "Antidote",
+  
+  
+  "itemGroup.zeboncraft": "ZebonCraft",
+  
+  
   "container.zebon_workbench": "Zebon Workbench",
+  
   
   "gui.recipebook.toggleRecipes.zebon_workbench": "Showing Craftable"
 }

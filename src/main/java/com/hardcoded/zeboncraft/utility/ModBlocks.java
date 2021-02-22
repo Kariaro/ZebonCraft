@@ -41,15 +41,22 @@ public class ModBlocks {
 	public static final RegistryObject<Block> ZEBON_WORKBENCH = register("zebon_workbench", () ->
 			new ZebonWorkbenchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).sound(SoundType.WOOD)));
 	
+	// Multiblock Debug
 	public static final RegistryObject<Block> ZRATE_BLOCK = register("zrate_tile_entity", () ->
 			new ZrateBlock(AbstractBlock.Properties.create(Material.ROCK).sound(SoundType.CLOTH)));
 	public static final RegistryObject<Block> ZEBON_SINK = register("zebon_sink", () ->
 			new ZebonSink(AbstractBlock.Properties.create(Material.ROCK).sound(SoundType.STONE)));
+	
+	
+	// Mushrooms
+	public static final RegistryObject<Block> ORANGE_CAP = registerMushroom("orange_cap", true);
+	public static final RegistryObject<Block> TALL_MUSHROOM = registerMushroom("tall_mushroom", true);
+	public static final RegistryObject<Block> GLOWING_YELLOW_CAP = register("glowing_yellow_cap",
+		() -> new ZebonMushroomBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((state) -> {
+			return 15;
+		}), false));
 
-	// Zlikcid
 	static void register() {
-		//PaintingEntity
-		// BowItem
 	}
 	
 	private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> block) {
@@ -60,5 +67,11 @@ public class ModBlocks {
 		RegistryObject<T>  ret = registerNoItem(name, block);
 		Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().group(ModItemGroups.ZEBON)));
 		return ret;
+	}
+	
+	private static RegistryObject<Block> registerMushroom(String name, final boolean harmfull) {
+		return register(name, () -> 
+			new ZebonMushroomBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT), harmfull)
+		);
 	}
 }

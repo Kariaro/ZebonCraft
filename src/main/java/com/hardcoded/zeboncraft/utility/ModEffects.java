@@ -7,10 +7,12 @@ import net.minecraft.potion.EffectType;
 import net.minecraftforge.fml.RegistryObject;
 
 public class ModEffects {
-	public static final RegistryObject<Effect> ZEBON_SPORES = Registration.EFFECTS.register("spores",
+	public static final RegistryObject<Effect> SPORES = Registration.EFFECTS.register("spores",
 			() -> new ZebonSporesEffect(EffectType.HARMFUL, 0xaa88ff7f));
 	
+	public static final RegistryObject<Effect> ANTIDOTE = Registration.EFFECTS.register("antidote",
+			() -> new ZebonSporesEffect(EffectType.BENEFICIAL, 0xf3a0e2));
+	
 	static void register() {
-		
 	}
 }

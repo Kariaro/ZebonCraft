@@ -21,11 +21,8 @@ public class ModRecipeProvider extends RecipeProvider {
 		super(generatorIn);
 	}
 	
-	
 	@Override
 	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-		// With conditions you can exclude recipes depending on what mods are loaded
-		
 		simpleRecipe("xxx", "xxx", "xxx", 'x', ModBlocks.ZEBON_BLOCK.get(), ModItems.ZEBON_INGOT.get(), consumer);
 		simpleRecipe("xxx", "x x", "   ", 'x', ModItems.ZEBON_HELMET.get(), ModItems.ZEBON_INGOT.get(), consumer);
 		simpleRecipe("x x", "xxx", "xxx", 'x', ModItems.ZEBON_CHESTPLATE.get(), ModItems.ZEBON_INGOT.get(), consumer);

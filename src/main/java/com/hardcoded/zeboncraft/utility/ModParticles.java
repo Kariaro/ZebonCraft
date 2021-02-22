@@ -10,6 +10,9 @@ public class ModParticles {
 	public static final RegistryObject<BasicParticleType> ZEBON_ORE_PARTICLE = register("zebon_ore_particle",
 			() -> new BasicParticleType(true));
 	
+	public static final RegistryObject<BasicParticleType> ZEBON_MUSHROOM_PARTICLE = register("zebon_mushroom_particle",
+			() -> new BasicParticleType(true));
+	
 	static void register() {
 		
 	}

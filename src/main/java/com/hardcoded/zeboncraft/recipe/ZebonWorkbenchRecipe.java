@@ -99,7 +99,7 @@ public class ZebonWorkbenchRecipe implements IRecipe<IInventory> {
 		
 		@SuppressWarnings("unchecked")
 		public Class<IRecipeSerializer<?>> getRegistryType() {
-			return (Class<IRecipeSerializer<?>>)this.getClass();
+			return (Class<IRecipeSerializer<?>>)((IRecipeSerializer<?>)this).getClass();
 		}
 		
 		public ZebonWorkbenchRecipe read(ResourceLocation recipeId, JsonObject json) {

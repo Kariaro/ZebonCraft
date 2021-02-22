@@ -17,5 +17,6 @@ public class ModParticleHandler {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticles(ParticleFactoryRegisterEvent event) {
 		Minecraft.getInstance().particles.registerFactory(ModParticles.ZEBON_ORE_PARTICLE.get(), ZebonParticle.Factory::new);
+		Minecraft.getInstance().particles.registerFactory(ModParticles.ZEBON_MUSHROOM_PARTICLE.get(), ZebonMushroomParticle.Factory::new);
 	}
 }

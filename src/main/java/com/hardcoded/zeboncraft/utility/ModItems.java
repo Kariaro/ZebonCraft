@@ -41,6 +41,10 @@ public class ModItems {
 	public static final RegistryObject<Item> PURPLE_DUST = Registration.ITEMS.register("purple_dust", () ->
 			new Item(new Item.Properties().group(ModItemGroups.ZEBON)));
 	
+
+	public static final RegistryObject<Item> PILE_OF_MUSHROOMS = Registration.ITEMS.register("pile_of_mushrooms", () ->
+			new Item(new Item.Properties().group(ModItemGroups.ZEBON)));
+	
 	
 	static void register() {
 		

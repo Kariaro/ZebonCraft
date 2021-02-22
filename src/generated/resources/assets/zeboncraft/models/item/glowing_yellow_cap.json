@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "zeboncraft:block/glowing_yellow_cap"
+  }
+}

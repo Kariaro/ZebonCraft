@@ -22,7 +22,6 @@ import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-// TODO: Make 
 @Mod(ZebonCraft.MOD_ID)
 public class ZebonCraft {
 	@SuppressWarnings("unused")
@@ -31,6 +30,27 @@ public class ZebonCraft {
 	public static final String MOD_ID = "zeboncraft";
 	public static final String MOD_NAME = "Zebon Craft";
 	
+	/* TODO: Fungus heart debuff.
+	 *       When the player gets the spores effect some hearts
+	 *       will be consumed by a fungus. These hearts will be
+	 *       easy to take so for x hearts and 4 infected hearts
+	 *       You can only naturally regen (x - 4) hearts.
+	 *           (This will make being inside the zetra biome dangerous)
+	 *
+	 *       When the spores debuff runs out. Each infected heart
+	 *       will slowly turn back to normal but as empty hearts.
+	 *       While you stand on Zrass block you have a chance of getting
+	 *       the spores debuff.
+	 */
+	
+	/* TODO: The ZetraBiome should have high fog and look like night.
+	 *       Torches should be less effective as light becomes darker.
+	 */
+	
+	/* TODO: Add 10 or more mushroome types and use them for potions. */
+	
+	/* TODO: Make the Zappling usable and create a Zetra Cap Tree? */
+	
 	public ZebonCraft() {
 		Registration.register();
 		
@@ -38,27 +58,23 @@ public class ZebonCraft {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-		
-		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	private void setup(final FMLCommonSetupEvent event) {
-		// LOGGER.info("HELLO FROM PREINIT");
-		// LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+		
 	}
 	
-	// Purple dust is a upgraded version of redstone
-	
-	// @SuppressWarnings("resource")
 	private void doClientStuff(final FMLClientSetupEvent event) {
-		// do something that can only be done on the client
-		// LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-		
 		ScreenManager.registerFactory(ModContainers.ZEBON_WORKBENCH.get(), ZebonWorkbenchScreen::new);
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZRASS.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZAPPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZEBON_POWERED_RAIL.get(), RenderType.getCutout());
+		
+		// Mushrooms
+		RenderTypeLookup.setRenderLayer(ModBlocks.ORANGE_CAP.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.TALL_MUSHROOM.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GLOWING_YELLOW_CAP.get(), RenderType.getCutout());
 		
 		MinecraftForge.EVENT_BUS.register(new ZnchantListener());
 		

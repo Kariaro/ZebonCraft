@@ -28,7 +28,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-// FIXME: Remove all xp related values from the ZebonWorkbenchRecipe
 public class ZebonWorkbenchTileEntity extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
 	protected NonNullList<ItemStack> items = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
 	protected int burnTime;
