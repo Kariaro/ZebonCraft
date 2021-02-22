@@ -1,6 +1,7 @@
 package com.hardcoded.zeboncraft.data.server;
 
 import com.hardcoded.zeboncraft.ZebonCraft;
+import com.hardcoded.zeboncraft.utility.ModBlocks;
 import com.hardcoded.zeboncraft.utility.ModItems;
 
 import net.minecraft.data.BlockTagsProvider;
@@ -18,6 +19,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 	@Override
 	protected void registerTags() {
 		getOrCreateBuilder(Tags.Items.INGOTS).add(ModItems.ZEBON_INGOT.get());
+		getOrCreateBuilder(Tags.Items.MUSHROOMS)
+			.add(ModBlocks.GLOWING_YELLOW_CAP.get().asItem())
+			.add(ModBlocks.TALL_MUSHROOM.get().asItem())
+			.add(ModBlocks.ORANGE_CAP.get().asItem())
+			.add(ModBlocks.GREEN_CAP.get().asItem())
+		;
 		
 	}
 	

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "zeboncraft",
+  "ingredients": [
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:mushrooms"
+    }
+  ],
+  "result": {
+    "item": "zeboncraft:pile_of_mushrooms"
+  }
+}

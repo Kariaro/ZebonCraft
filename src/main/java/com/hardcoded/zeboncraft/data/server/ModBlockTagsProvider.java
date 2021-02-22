@@ -24,6 +24,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 		getOrCreateBuilder(ModTags.Blocks.MUSHROOMS)
 			.add(ModBlocks.TALL_MUSHROOM.get())
 			.add(ModBlocks.ORANGE_CAP.get())
+			.add(ModBlocks.GREEN_CAP.get())
 			.add(ModBlocks.GLOWING_YELLOW_CAP.get());
 	}
 	

@@ -8,12 +8,14 @@ import com.hardcoded.zeboncraft.utility.ModBlocks;
 import com.hardcoded.zeboncraft.utility.ModItems;
 
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 
 public class ModRecipeProvider extends RecipeProvider {
 
@@ -35,6 +37,15 @@ public class ModRecipeProvider extends RecipeProvider {
 			.setGroup(ZebonCraft.MOD_ID)
 			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ModBlocks.ZEBON_BLOCK.get()))
 			.build(consumer, new ResourceLocation(ZebonCraft.MOD_ID, "zebon_ingot_shapeless"));
+		
+		ShapelessRecipeBuilder.shapelessRecipe(ModItems.PILE_OF_MUSHROOMS.get())
+			.addIngredient(Tags.Items.MUSHROOMS)
+			.addIngredient(Tags.Items.MUSHROOMS)
+			.addIngredient(Tags.Items.MUSHROOMS)
+			.addIngredient(Tags.Items.MUSHROOMS)
+			.setGroup(ZebonCraft.MOD_ID)
+			.addCriterion("item", InventoryChangeTrigger.Instance.forItems(ItemPredicate.Builder.create().tag(Tags.Items.MUSHROOMS).build()))
+			.build(consumer);
 		
 		ShapelessRecipeBuilder.shapelessRecipe(ModItems.BLUE_GRIT.get())
 			.addIngredient(ModBlocks.ZRASS.get())

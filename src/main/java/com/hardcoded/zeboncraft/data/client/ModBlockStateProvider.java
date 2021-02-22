@@ -31,10 +31,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 		
 		// Plants
 		simpleBush(ModBlocks.ZRASS.get());
+		simpleBush(ModBlocks.SHORT_ZRASS.get());
 		simpleBush(ModBlocks.ZAPPLING.get());
 		
 		// Mushrooms
 		simpleBush(ModBlocks.ORANGE_CAP.get());
+		simpleBush(ModBlocks.GREEN_CAP.get());
 		simpleBush(ModBlocks.TALL_MUSHROOM.get());
 		simpleBush(ModBlocks.GLOWING_YELLOW_CAP.get());
 		

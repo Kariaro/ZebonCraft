@@ -11,10 +11,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 public class ZrassPlantBlock extends BushBlock implements IGrowable, net.minecraftforge.common.IForgeShearable {
-	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-	
-	public ZrassPlantBlock(Properties properties) {
+	protected final VoxelShape SHAPE;
+	public ZrassPlantBlock(Properties properties, double height) {
 		super(properties);
+		// 13.0f
+		SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, height, 14.0D);
 	}
 	
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -39,7 +40,6 @@ public class ZrassPlantBlock extends BushBlock implements IGrowable, net.minecra
 	
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		// FIXME: Implement
 	}
 	
 	@Override

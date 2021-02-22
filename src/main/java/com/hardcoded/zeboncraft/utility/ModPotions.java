@@ -25,8 +25,6 @@ public class ModPotions {
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerPotions(final RegistryEvent.Register<Potion> event) {
-		//System.out.println("Register POTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		
 		BrewingRecipeRegistry.addRecipe(
 			Ingredient.fromStacks(PotionUtils.addPotionToItemStack(Items.POTION.getDefaultInstance(), Potions.HEALING)),
 			Ingredient.fromItems(ModItems.PILE_OF_MUSHROOMS.get()),

@@ -3,22 +3,27 @@ package com.hardcoded.zeboncraft;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hardcoded.zeboncraft.client.gui.FungusHeartGuiOverlay;
 import com.hardcoded.zeboncraft.container.ZebonWorkbenchScreen;
 import com.hardcoded.zeboncraft.enchantment.ZnchantListener;
 import com.hardcoded.zeboncraft.item.ZebonSword;
-import com.hardcoded.zeboncraft.tileentity.ZrateTileEntityRenderer;
+import com.hardcoded.zeboncraft.network.ModPacketHandlers;
 import com.hardcoded.zeboncraft.utility.*;
 
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.*;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -51,30 +56,45 @@ public class ZebonCraft {
 	
 	/* TODO: Make the Zappling usable and create a Zetra Cap Tree? */
 	
+	
+	public static final ItemGroup ZEBON_CRAFT = new ItemGroup("zeboncraft") {
+		public ItemStack createIcon() {
+			return new ItemStack(ModItems.ZEBON_INGOT.get());
+		}
+	};
+
 	public ZebonCraft() {
 		Registration.register();
 		
+		ModLoadingContext loadingContext = ModLoadingContext.get();
+		loadingContext.registerConfig(ModConfig.Type.COMMON, ZebonConfig.MOD_CONFIG, "zebon-craft.toml");
+		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+		//FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+		//FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+		
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new FungusHeartGuiOverlay());
 	}
 	
 	private void setup(final FMLCommonSetupEvent event) {
-		
+		ModCapabilities.register();
+		ModPacketHandlers.register();
 	}
 	
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainers.ZEBON_WORKBENCH.get(), ZebonWorkbenchScreen::new);
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZRASS.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.SHORT_ZRASS.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZAPPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZEBON_POWERED_RAIL.get(), RenderType.getCutout());
 		
 		// Mushrooms
-		RenderTypeLookup.setRenderLayer(ModBlocks.ORANGE_CAP.get(), RenderType.getCutout());
-		RenderTypeLookup.setRenderLayer(ModBlocks.TALL_MUSHROOM.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(ModBlocks.GLOWING_YELLOW_CAP.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.TALL_MUSHROOM.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.ORANGE_CAP.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GREEN_CAP.get(), RenderType.getCutout());
 		
 		MinecraftForge.EVENT_BUS.register(new ZnchantListener());
 		
@@ -87,9 +107,10 @@ public class ZebonCraft {
 		});
 		
 		RenderTypeLookup.setRenderLayer(ModBlocks.ZRATE_BLOCK.get(), RenderType.getCutoutMipped());
-		ClientRegistry.bindTileEntityRenderer(ModTileEntities.ZRATE.get(), ZrateTileEntityRenderer::new);
+		// ClientRegistry.bindTileEntityRenderer(ModTileEntities.ZRATE.get(), ZrateTileEntityRenderer::new);
 	}
 	
+	/*
 	private void enqueueIMC(final InterModEnqueueEvent event) {
 		// some example code to dispatch IMC to another mod
 		// InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
@@ -99,10 +120,11 @@ public class ZebonCraft {
 		// some example code to receive and process InterModComms from other mods
 		// LOGGER.info("Got IMC {}", event.getIMCStream().map(m->m.getMessageSupplier().get()).collect(Collectors.toList()));
 	}
+	*/
 	
 	@SubscribeEvent
 	public void onServerStarting(FMLServerStartingEvent event) {
-		// LOGGER.info("HELLO from server starting");
+		
 	}
 	
 //	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)

@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
+    "zeboncraft:glowing_yellow_cap",
     "zeboncraft:tall_mushroom",
     "zeboncraft:orange_cap",
-    "zeboncraft:green_cap",
-    "zeboncraft:glowing_yellow_cap"
+    "zeboncraft:green_cap"
   ]
 }

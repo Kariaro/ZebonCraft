@@ -3,16 +3,20 @@ package com.hardcoded.zeboncraft.block;
 import java.util.List;
 import java.util.Random;
 
-import com.hardcoded.zeboncraft.utility.ModEffects;
-import com.hardcoded.zeboncraft.utility.ModEnchantments;
-import com.hardcoded.zeboncraft.utility.ModParticles;
+import com.hardcoded.zeboncraft.capabilities.IFungusData;
+import com.hardcoded.zeboncraft.network.ModPacketHandlers;
+import com.hardcoded.zeboncraft.network.client.FungusDataPacket;
+import com.hardcoded.zeboncraft.utility.*;
 
 import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -22,6 +26,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+// TODO: Add config file that can dissable the spores effect
 public class ZebonMushroomBlock extends BushBlock implements IGrowable {
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
 	private final boolean harmfull;
@@ -47,8 +52,10 @@ public class ZebonMushroomBlock extends BushBlock implements IGrowable {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
+	// TODO: In 1.17.x remove this .isAir and replace it by the new method
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return true;
+		return !worldIn.getBlockState(pos).isAir();
 	}
 	
 	public boolean isHarmfull() {
@@ -64,35 +71,64 @@ public class ZebonMushroomBlock extends BushBlock implements IGrowable {
 	}
 	
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+		
 	}
 	
-	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		if(!worldIn.isRemote) {
-			List<PlayerEntity> entity = worldIn.getEntitiesWithinAABB(PlayerEntity.class, new AxisAlignedBB(pos).grow(4));
+	// TODO: This should fire every tick....
+	// FIXME: Possible bug when the player leave the game and does not get the fungus data back
+	// FIXME: When the player moves this gets called more often.
+	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+		if(!worldIn.isRemote && harmfull) {
+			if(ZebonConfig.hurtfullMushroomsDealDamage) {
+				if(entityIn instanceof LivingEntity) {
+					((LivingEntity)entityIn).addPotionEffect(new EffectInstance(Effects.POISON, 30, 2));
+				}
+			}
 			
-			for(PlayerEntity e : entity) {
-				tryInfectPlayer(e);
+			if(ZebonConfig.enableInfectedHearts) {
+				if(entityIn instanceof PlayerEntity) {
+					PlayerEntity entity = (PlayerEntity)entityIn;
+					
+					if(!isInvulerable(entity)) {
+						infectPlayer(entity);
+					}
+				}
 			}
 		}
 	}
 	
-	
 	// If the player had absorption and got infected. half a heart of that absorption will get consumed
-	private void tryInfectPlayer(PlayerEntity e) {
-		if(e.isPotionActive(ModEffects.ANTIDOTE.get())) return;
+	private boolean isInvulerable(PlayerEntity e) {
+		if(e.isPotionActive(ModEffects.ANTIDOTE.get())) return true;
 		
 		Iterable<ItemStack> iter = e.getArmorInventoryList();
-		if(!(iter instanceof List)) return;
+		if(!(iter instanceof List)) return false;
 		
 		List<ItemStack> list = (List<ItemStack>)iter;
-		if(list.size() < 4) return;
+		if(list.size() < 4) return false;
 		
-		if(EnchantmentHelper.getEnchantmentLevel(ModEnchantments.AIR_FILTER.get(), list.get(3)) == 0) {
-			infectPlayer(e);
+		if(EnchantmentHelper.getEnchantmentLevel(ModEnchantments.AIR_FILTER.get(), list.get(3)) != 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private void infectPlayer(PlayerEntity entity) {
+		entity.addPotionEffect(new EffectInstance(ModEffects.SPORES.get(), 50, 0, true, true));
+		
+		IFungusData data = entity.getCapability(ModCapabilities.FUNGUS_DATA).orElse(null);
+		if(data != null) {
+			data.setInfectedHearts(data.getInfectedHearts() + 0.05f);
+			
+			if(data.getInfectedHearts() > 20) {
+				data.setInfectedHearts(0);
+			}
+			
+			if(entity instanceof ServerPlayerEntity) {
+				ModPacketHandlers.sendToPlayer(new FungusDataPacket(entity.getUniqueID(), data.getInfectedHearts()), (ServerPlayerEntity)entity);
+			}
 		}
 	}
 	
-	private void infectPlayer(PlayerEntity e) {
-		e.addPotionEffect(new EffectInstance(ModEffects.SPORES.get(), 200, 0, true, true));
-	}
 }

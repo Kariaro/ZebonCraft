@@ -82,13 +82,15 @@ public class ZebonWorkbenchRecipeGui extends RecipeBookGui {
 				ghostFuelTime += deltaTime;
 			}
 			
-			int i = ghostFuelSlot.xPos + x;
-			int j = ghostFuelSlot.yPos + y;
-			AbstractGui.fill(stack, i, j, i + 16, j + 16, 0x30FF0000);
-			this.mc.getItemRenderer().renderItemAndEffectIntoGUI(mc.player, getFuelGhostIcon().getDefaultInstance(), i, j);
-			RenderSystem.depthFunc(516);
-			AbstractGui.fill(stack, i, j, i + 16, j + 16, 0x30FFFFFF);
-			RenderSystem.depthFunc(515);
+			if(!ghostFuelSlot.getHasStack()) {
+				int i = ghostFuelSlot.xPos + x;
+				int j = ghostFuelSlot.yPos + y;
+				AbstractGui.fill(stack, i, j, i + 16, j + 16, 0x30FF0000);
+				this.mc.getItemRenderer().renderItemAndEffectIntoGUI(mc.player, getFuelGhostIcon().getDefaultInstance(), i, j);
+				RenderSystem.depthFunc(516);
+				AbstractGui.fill(stack, i, j, i + 16, j + 16, 0x30FFFFFF);
+				RenderSystem.depthFunc(515);
+			}
 		}
 	}
 	

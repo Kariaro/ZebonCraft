@@ -39,7 +39,6 @@ public class ZapplingBlock extends BushBlock implements IGrowable, net.minecraft
 	
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		// FIXME: Implement
 	}
 	
 	@Override

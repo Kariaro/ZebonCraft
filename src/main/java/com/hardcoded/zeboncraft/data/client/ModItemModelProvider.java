@@ -76,17 +76,15 @@ public class ModItemModelProvider extends ItemModelProvider {
 		
 		builder(itemGenerated, "zebon_horse_armor");
 		
-		// getBuilder("zrass").parent(itemGenerated).texture("layer0", "block/zrass");
-		// getBuilder("zappling").parent(itemGenerated).texture("layer0", "block/zappling");
-		// getBuilder("zebon_powered_rail").parent(itemGenerated).texture("layer0", "block/zebon_powered_rail");
-		
 		builderBlock(itemGenerated, "zrass");
+		builderBlock(itemGenerated, "short_zrass");
 		builderBlock(itemGenerated, "zappling");
 		builderBlock(itemGenerated, "zebon_powered_rail");
 		
 		// Mushrooms
 		builderBlock(itemGenerated, "tall_mushroom");
 		builderBlock(itemGenerated, "orange_cap");
+		builderBlock(itemGenerated, "green_cap");
 		builderBlock(itemGenerated, "glowing_yellow_cap");
 		builder(itemGenerated, "pile_of_mushrooms");
 	}

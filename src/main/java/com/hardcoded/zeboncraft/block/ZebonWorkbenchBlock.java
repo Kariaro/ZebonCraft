@@ -2,6 +2,7 @@ package com.hardcoded.zeboncraft.block;
 
 import com.hardcoded.zeboncraft.container.ZebonWorkbenchContainer;
 import com.hardcoded.zeboncraft.tileentity.ZebonWorkbenchTileEntity;
+import com.hardcoded.zeboncraft.utility.ModStats;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -32,9 +33,8 @@ public class ZebonWorkbenchBlock extends Block {
 		} else {
 			TileEntity tileentity = worldIn.getTileEntity(pos);
 			if(tileentity instanceof ZebonWorkbenchTileEntity) {
-				// FIXME: Add custom statistics
 				player.openContainer((ZebonWorkbenchTileEntity)tileentity);
-				//player.addStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+				player.addStat(ModStats.INTERACT_WITH_ZEBON_WORKBENCH);
 			}
 			
 			return ActionResultType.CONSUME;

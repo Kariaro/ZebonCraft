@@ -33,7 +33,12 @@ public class ZrassBlock extends Block implements IGrowable {
 //		tryInfect(worldIn, rand, pos.south());
 //		tryInfect(worldIn, rand, pos.up());
 //		tryInfect(worldIn, rand, pos.down());
-		BlockState zrassstate = ModBlocks.ZRASS.get().getDefaultState();
+		
+		// FIXME: Inefficient way to randomize block states.
+		BlockState[] states = {
+			ModBlocks.ZRASS.get().getDefaultState(),
+			ModBlocks.SHORT_ZRASS.get().getDefaultState()
+		};
 		
 		for(int i = 0; i < 64; i++) {
 			if(rand.nextDouble() > 0.3) continue;
@@ -41,7 +46,7 @@ public class ZrassBlock extends Block implements IGrowable {
 			BlockPos blockpos = pos.add(rand.nextInt(5) - 2, rand.nextInt(5) - 2, rand.nextInt(5) - 2);
 			
 			if(worldIn.isAirBlock(blockpos) && worldIn.getBlockState(blockpos.down()).isIn(ModBlocks.ZRASS_BLOCK.get())) {
-				worldIn.setBlockState(blockpos, zrassstate);
+				worldIn.setBlockState(blockpos, states[rand.nextInt(states.length)]);
 			}
 		}
 	}

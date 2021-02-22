@@ -1,11 +1,11 @@
-# ZebonCraft
+# ZebonCraft (1.16.x)
 
-This is a project where I try to learn how to code mods.
+This is a project where I try to learn how to code minecraft mods.
 
 # Progress List
 
-Everything here I need to learn before I can code anything possible within minecraft.
-When I'm done with the list I'm going to join some projects :D
+When I'm done with all of these tasks I should be able to code anything possible within minecraft.
+After that I'll try join some projects :D
 
 
 ### TODO (1.17.x)
@@ -25,7 +25,7 @@ Plants                        : DONE
 Furnace Recipes               : DONE
 Shapeless Recipes             : DONE
 Recipes                       : DONE
-LootTables     ! IMPORTAINT ! : DONE
+LootTables                    : DONE
 ItemAnimation                 : DONE
 TileEntity                    : DONE
 Custom Render                 : DONE
@@ -34,16 +34,17 @@ Inventories                   : DONE
 GUI                           : DONE
 Particles                     : DONE
 Effects                       : DONE
+Potions                       : DONE
+Config Files                  : DONE
+Network Packets               : DONE
+Overlays                      : DONE
 Custom ISidedInventory        : 10%
-Network Packets               : 10%
-Potions                       :
 Custom Keybinds               :
-Overlays                      :
-Events                        :
+Custom Sound                  :
 Redstone                      :
+Events                        :
 Use Forge Fluid               :
 Use Forge RF                  :
-Custom Sound                  :
 ```
 
 ### Intermediate
@@ -52,8 +53,9 @@ Custom Recipe Serializer      : DONE
 Custom Container Screen       : DONE
 Custom Crafting System        : DONE
 Use the recipe button         : DONE
-Custom Statistics             :
-Custom Capabilities           :
+Custom Capabilities           : DONE
+Custom Statistics             : DONE
+Overlays (Information)        : 10%
 Custom Entity                 :
 TileEntity (Network Packets)  :
 Add a custom Dimension        :
@@ -62,6 +64,7 @@ Multiblock structures         :
 
 ### Advanced stuff
 ```
+Access Transformers           : DONE
 Auto generate items from tags :
 Auto generate tools from tags :
 Use other mods textures auto  :

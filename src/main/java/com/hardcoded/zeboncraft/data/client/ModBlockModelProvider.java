@@ -2,6 +2,7 @@ package com.hardcoded.zeboncraft.data.client;
 
 import com.hardcoded.zeboncraft.ZebonCraft;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockModelProvider;

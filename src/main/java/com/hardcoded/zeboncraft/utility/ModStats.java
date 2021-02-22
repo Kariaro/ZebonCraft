@@ -1,11 +1,20 @@
 package com.hardcoded.zeboncraft.utility;
 
-@Deprecated
-// FIXME: Add custom statistics to the modd
+import net.minecraft.stats.IStatFormatter;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+
 public class ModStats {
-	//public static final RegistryObject<ResourceLocation> INTERACT_WITH_ZEBON_WORKBENCH = Registration.STATS.register("interact_with_zebon_workbench", () -> registerCustom("interact_with_furnace", IStatFormatter.DEFAULT);
+	public static final ResourceLocation INTERACT_WITH_ZEBON_WORKBENCH = registerCustom("interact_with_zebon_workbench", IStatFormatter.DEFAULT);
 	
 	static void register() {
-		//Stats.ANIMALS_BRED
+	}
+	
+	private static ResourceLocation registerCustom(String key, IStatFormatter formatter) {
+		ResourceLocation resourcelocation = new ResourceLocation(key);
+		Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
+		Stats.CUSTOM.get(resourcelocation, formatter);
+		return resourcelocation;
 	}
 }

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModBlocks {
 	public static final RegistryObject<Block> ZEBON_ORE = register("zebon_ore", () ->
-			new ZebonOreBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).harvestTool(ToolType.PICKAXE).harvestLevel(2).sound(SoundType.SHROOMLIGHT)));
+			new ZebonOreBlock(AbstractBlock.Properties.create(Material.ROCK).setRequiresTool().hardnessAndResistance(3.0F, 3.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2).sound(SoundType.SHROOMLIGHT)));
 	public static final RegistryObject<Block> ZEBON_BLOCK = register("zebon_block", () ->
 			new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(3, 10).harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
 	
@@ -22,7 +22,9 @@ public class ModBlocks {
 			new Block(AbstractBlock.Properties.create(Material.LEAVES).sound(SoundType.PLANT)));
 	
 	public static final RegistryObject<Block> ZRASS = register("zrass", () ->
-			new ZrassPlantBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.PLANT)));
+			new ZrassPlantBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.PLANT), 11.0));
+	public static final RegistryObject<Block> SHORT_ZRASS = register("short_zrass", () ->
+			new ZrassPlantBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.PLANT), 4.0));
 	public static final RegistryObject<Block> ZAPPLING = register("zappling", () ->
 			new ZapplingBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.PLANT)));
 	public static final RegistryObject<Block> ZRASS_BLOCK = register("zrass_block", () ->
@@ -50,12 +52,13 @@ public class ModBlocks {
 	
 	// Mushrooms
 	public static final RegistryObject<Block> ORANGE_CAP = registerMushroom("orange_cap", true);
+	public static final RegistryObject<Block> GREEN_CAP = registerMushroom("green_cap", false);
 	public static final RegistryObject<Block> TALL_MUSHROOM = registerMushroom("tall_mushroom", true);
 	public static final RegistryObject<Block> GLOWING_YELLOW_CAP = register("glowing_yellow_cap",
 		() -> new ZebonMushroomBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((state) -> {
 			return 15;
 		}), false));
-
+	
 	static void register() {
 	}
 	
