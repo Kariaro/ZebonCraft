@@ -34,9 +34,9 @@ Inventories                   : DONE
 GUI                           : DONE
 Particles                     : DONE
 Effects                       : DONE
+Potions                       : DONE
 Custom ISidedInventory        : 10%
 Network Packets               : 10%
-Potions                       :
 Custom Keybinds               :
 Overlays                      :
 Events                        :
