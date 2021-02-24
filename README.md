@@ -25,7 +25,7 @@ Plants                        : DONE
 Furnace Recipes               : DONE
 Shapeless Recipes             : DONE
 Recipes                       : DONE
-LootTables     ! IMPORTAINT ! : DONE
+LootTables                    : DONE
 ItemAnimation                 : DONE
 TileEntity                    : DONE
 Custom Render                 : DONE
@@ -34,16 +34,17 @@ Inventories                   : DONE
 GUI                           : DONE
 Particles                     : DONE
 Effects                       : DONE
+Potions                       : DONE
+Config Files                  : DONE
+Network Packets               : DONE
+Overlays                      : DONE
 Custom ISidedInventory        : 10%
-Network Packets               : 10%
-Potions                       :
 Custom Keybinds               :
-Overlays                      :
-Events                        :
+Custom Sound                  :
 Redstone                      :
+Events                        :
 Use Forge Fluid               :
 Use Forge RF                  :
-Custom Sound                  :
 ```
 
 ### Intermediate
@@ -52,8 +53,9 @@ Custom Recipe Serializer      : DONE
 Custom Container Screen       : DONE
 Custom Crafting System        : DONE
 Use the recipe button         : DONE
-Custom Statistics             :
-Custom Capabilities           :
+Custom Capabilities           : DONE
+Custom Statistics             : DONE
+Overlays (Information)        : 10%
 Custom Entity                 :
 TileEntity (Network Packets)  :
 Add a custom Dimension        :
@@ -62,6 +64,7 @@ Multiblock structures         :
 
 ### Advanced stuff
 ```
+Access Transformers           : DONE
 Auto generate items from tags :
 Auto generate tools from tags :
 Use other mods textures auto  :
